@@ -1,0 +1,74 @@
+#+TITLE: Melancholy Theme
+#+SUBTITLE: A dark emacs theme thats actually pretty sad really
+#+AUTHOR: @baaash
+
+* Screenshots
+#+CAPTION: melancholy code preview 1
+#+NAME: fig.code-preview-1
+
+[[file:screens/melancholy-code-preview-1.png][melancholy code preview #1]]
+
+#+CAPTION: melancholy code preview 2
+#+NAME: fig.code-preview-2
+[[file:screens/melancholy-code-preview-2.png][melancholy code preview #2]]
+
+#+CAPTION: melancholy helm over terminal buffer
+#+NAME: fig.helm-preview
+[[file:screens/melancholy-helm-over-terminal-buffer-preview.png][melancholy helm over a terminal buffer preview]]
+
+
+* Installation
+** Manual
+
+Download melancholy-theme.el to the directory ~/.emacs.d/themes/.  Add this to your .emacs:
+
+
+#+begin_example elisp
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+#+end_example
+
+
+Now you can load the theme with the interactive function load-theme like this:
+
+#+begin_example elisp
+
+ M-x load-theme RET melancholy
+
+#+end_example
+
+** Melpa
+
+Melancholy is not yet available in  MELPA.
+
+Soon, hopefully, you will be able to  install melancholy with the following command:
+
+#+begin_example elisp
+
+M-x package-install melancholy
+
+#+end_example
+
+or with use-package:
+
+#+begin_example elisp
+
+(use-package melancholy
+  :ensure t))
+
+#+end_example
+
+To load it automatically on Emacs startup add this to your init file:
+
+
+#+begin_example elisp
+
+ (load-theme 'melancholy t)
+
+#+end_example
+
+
+
+
+
+[[https://thenounproject.com/icon/melancholy-1994623/][melancholy vector design by evgeni moryakov]]
