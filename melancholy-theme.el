@@ -37,7 +37,7 @@
 
 (let
     (
-     (font-heading "OpenSansCondensed")
+     (font-heading "ImpactLabel")
      (font-cursive "Dancingscript" )
      (font-default   "Purisa" )
      (font-mono "Go-Mono" )
@@ -244,7 +244,7 @@
     `(org-upcoming-deadline ((t (:foreground ,my-visited :slant italic ))))
     `(org-priority ((t (:family ,font-mono :foreground ,my-visited :slant normal  ))))
     `(org-block-begin-line ((t (:foreground ,my-shadow :background ,my-contrast ))))
-    `(org-block ((t (:foreground ,my-pop :background ,my-deepcontrast :box nil ))))
+    `(org-block ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
     `(org-block-end-line ((t (:foreground ,my-shadow :background ,my-contrast ))))
     `(org-date ((t (:foreground ,my-visited ))))
     `(org-document-info ((t :(:height 1.25 foreground ,my-visited ))))
@@ -263,7 +263,7 @@
     `(org-link ((t :foreground ,my-active :underline t )))
     `(org-scheduled ((t :foreground ,my-info )))
     `(org-scheduled-today ((t :foreground ,my-highlight )))
-    `(org-src-block-faces ((t :family ,font-mono :background ,my-deepcontrast )))
+    `(org-src-block-faces ((t :family ,font-mono )))
     `(org-special-keyword ((t :family ,font-default :foreground ,my-contrast )))
     `(org-table ((t :family ,font-mono :foreground ,my-contrast )))
     `(org-tag ((t (:foreground ,my-active ))))
