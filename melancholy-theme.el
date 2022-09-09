@@ -20,12 +20,12 @@
 ;;
 ;; Ensure the following fonts are installed before use:
 ;;
+;;    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
 ;;    - texlive-fonts-extra
 ;;    - fonts-purisa
 ;;    - fonts-inconsolata
 ;;    - fonts-dancingscript
 ;;
-;; Personally, i use Impact_Label font for font-heading variable
 ;; ========================================
 
 
@@ -40,7 +40,7 @@
      (font-heading "ImpactLabel")
      (font-cursive "Dancingscript" )
      (font-default   "Purisa" )
-     (font-mono "Go-Mono" )
+     (font-mono "Inconsolata" )
      (font-sans "OpenSansCondensed" )
      (my-fluff              "#FCDEEA" )
      (my-active             "#F92672" )
