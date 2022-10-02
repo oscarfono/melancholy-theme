@@ -206,8 +206,6 @@
     `(helm-source-header ((t (:family ,font-heading :height 1.9 :foreground ,my-contrast :underline t ))))
     `(helm-visible-mark ((t (:background ,my-visited ))))
 
-
-
     ;; heredocs
     ;;=========================================
     `(sh-heredoc ((t (:foreground ,my-pop ))))
@@ -225,6 +223,11 @@
     `(magit-diff-removed ((t (:foreground ,my-warning :background ,my-deepcontrast))))
     `(magit-diff-removed-highlight ((t (:foreground ,my-warning :background ,my-deepcontrast))))
     `(magit-diff-hunk-heading-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
+
+        ;; man
+    ;; ========================================
+    `(man-follow ((t (:foreground ,my-active ))))
+    `(man-overstrike ((t (:foreground ,my-pop ))))
 
     ;; minibuffer
     ;; ========================================
