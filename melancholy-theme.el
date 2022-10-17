@@ -22,8 +22,8 @@
 ;;
 ;;    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
 ;;    - texlive-fonts-extra
-;;    - fonts-purisa
-;;    - fonts-inconsolata
+;;    - texlive-sourcecodepro.
+;;    - fonts-purisa || thai-scalable-purisa-fonts
 ;;    - fonts-dancingscript
 ;;
 ;; ========================================
@@ -40,7 +40,7 @@
      (font-heading "ImpactLabel")
      (font-cursive "Dancingscript" )
      (font-default   "Purisa" )
-     (font-mono "Inconsolata" )
+     (font-mono "SourceCodePro" )
      (font-sans "OpenSansCondensed" )
      (my-fluff              "#FCDEEA" )
      (my-active             "#F92672" )
@@ -198,10 +198,10 @@
     `(helm-header ((t ( :foreground ,my-white ))))
     `(helm-header-line-left-margin ((t (:background ,my-info :foreground ,my-shadow ))))
     `(helm-match ((t (:foreground ,my-visited :weight bold ))))
-    `(helm-minibuffer-prompt ((t (:foreground ,my-pop))))
+    `(helm-minibuffer-prompt ((t (:foreground ,my-pop)qq)))
     `(helm-no-file-buffer-modified ((t (:foreground ,my-info ))))
     `(helm-prefarg ((t (:foreground ,my-visited ))))
-    `(helm-selection ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
+    `(helm-selection ((t (:foreground ,my-deepcontrast :background ,my-info ))))
     `(helm-separator ((t (:background ,my-deepcontrast ))))
     `(helm-source-header ((t (:family ,font-heading :height 1.9 :foreground ,my-contrast :underline t ))))
     `(helm-visible-mark ((t (:background ,my-visited ))))
@@ -226,6 +226,7 @@
 
         ;; man
     ;; ========================================
+    `(man-mode-hook ((t (:family ,font-mono))))
     `(man-follow ((t (:foreground ,my-active ))))
     `(man-overstrike ((t (:foreground ,my-pop ))))
 
