@@ -264,8 +264,8 @@
     `(org-level-5 ((t :family ,font-sans :height 1.4  :weight regular )))
     `(org-level-6 ((t :family ,font-sans :height 1.2  :weight regular )))
     `(org-level-7 ((t :family ,font-sans :foreground ,my-contrast :height 1.1 :weight regular )))
-   `(org-link ((t :foreground ,my-active :underline t )))
-   `(org-scheduled ((t :foreground ,my-info )))
+    `(org-link ((t :foreground ,my-active :underline t )))
+    `(org-scheduled ((t :foreground ,my-info )))
     `(org-scheduled-today ((t :foreground ,my-highlight )))
     `(org-src-block-faces ((t :family ,font-mono )))
     `(org-special-keyword ((t :family ,font-default :foreground ,my-contrast )))
@@ -284,8 +284,8 @@
 
     ;; Terraform
     ;; =========================================
-    `(terraform--resource-name-face ((t :foreground ,my-active )))
-    `(terraform--resource-type-face ((t :foreground ,my-fluff )))
+    `(terraform--resource-name-face ((t :foreground ,my-fluff )))
+    `(terraform--resource-type-face ((t :foreground ,my-active )))
 
     ;; Terminal
     ;; =========================================
