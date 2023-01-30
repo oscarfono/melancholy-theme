@@ -282,6 +282,11 @@
     `(speedbar- ((t (:foreground ,my-active ))))
     `(speedbar-button-face ((t (:foreground ,my-pop ))))
 
+    ;; Terraform
+    ;; =========================================
+    `(terraform--resource-name-face ((t :foreground ,my-active )))
+    `(terraform--resource-type-face ((t :foreground ,my-fluff )))
+
     ;; Terminal
     ;; =========================================
     `(term-color-black ((t (:family ,font-mono :foreground ,my-shadow ))))
