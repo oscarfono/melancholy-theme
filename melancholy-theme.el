@@ -56,11 +56,13 @@
      (my-white              "#FFFFFF" ))
 
 ;; Theme Faces
+;; ========================================
+
   (custom-theme-set-faces
     'melancholy
 
-    ;; default
-    ;; ========================================
+ ;; default
+ ;; ========================================
 
     `(default ((t (
                    :family ,font-default
@@ -109,22 +111,22 @@
     `(button ((t (:foreground ,my-active :underline (:color foreground-color :style line) ))))
     `(link ((t (:foreground ,my-active :underline t :weight bold ))))
     `(link-visited ((t ( :foreground ,my-visited ))))
-    `(secondary-selection ((t (:background ,my-fluff ))))
-    `(font-lock-builtin-face ((t (:foreground ,my-highlight ))))
-    `(font-lock-comment-delimiter-face ((t (:foreground ,my-visited ))))
-    `(font-lock-comment-face ((t (:foreground ,my-visited ))))
-    `(font-lock-constant-face ((t (:foreground ,my-info ))))
-    `(font-lock-doc-face ((t (:foreground ,my-info ))))
-    `(font-lock-function-name-face ((t (:foreground ,my-pop ))))
-    `(font-lock-keyword-face ((t (:family ,font-sans :height 1.4 :foreground ,my-active ))))
-    `(font-lock-negation-char-face ((t (:foreground ,my-active ))))
-    `(font-lock-preprocessor-face ((t (:foreground ,my-active ))))
-    `(font-lock-regexp-grouping-backslash ((t (:foreground ,my-pop  ))))
-    `(font-lock-regexp-grouping-construct ((t (:foreground ,my-pop  ))))
-    `(font-lock-string-face ((t (:foreground ,my-visited :weight extra-light :slant italic ))))
-    `(font-lock-type-face ((t (:foreground ,my-pop ))))
-    `(font-lock-variable-name-face ((t (:foreground ,my-highlight ))))
-    `(font-lock-warning-face ((t (:foreground ,my-warning ))))
+    `(secondary-selection ((t ( :background ,my-fluff ))))
+    `(font-lock-builtin-face ((t ( :family ,font-mono :foreground ,my-pop ))))
+    `(font-lock-comment-delimiter-face ((t ( :family ,font-mono :foreground ,my-visited ))))
+    `(font-lock-comment-face ((t ( :family ,font-mono :foreground ,my-visited :height 1.25 ))))
+    `(font-lock-constant-face ((t ( :family ,font-mono :foreground ,my-info ))))
+    `(font-lock-doc-face ((t ( :foreground ,my-info ))))
+    `(font-lock-function-name-face ((t ( :family ,font-mono :foreground ,my-pop ))))
+    `(font-lock-keyword-face ((t ( :family ,font-sans :height 1.4 :foreground ,my-active ))))
+    `(font-lock-negation-char-face ((t ( :foreground ,my-active ))))
+    `(font-lock-preprocessor-face ((t ( :foreground ,my-active ))))
+    `(font-lock-regexp-grouping-backslash ((t ( :foreground ,my-pop  ))))
+    `(font-lock-regexp-grouping-construct ((t ( :foreground ,my-pop  ))))
+    `(font-lock-string-face ((t ( :family ,font-mono :foreground ,my-visited :height 1.25 :weight extra-light :slant italic ))))
+    `(font-lock-type-face ((t ( :family ,font-mono :foreground ,my-highlight ))))
+    `(font-lock-variable-name-face ((t ( :family ,font-mono :foreground ,my-contrast ))))
+    `(font-lock-warning-face ((t ( :family ,font-mono :foreground ,my-warning ))))
     `(tooltip ((t (:foreground ,my-contrast :background ,my-info ))))
     `(trailing-whitespace ((t (:background ,my-warning ))))
 
@@ -132,8 +134,8 @@
     ;; ========================================
     `(show-paren-match ((t (:background ,my-shadow :weight extra-bold :foreground ,my-pop  ))))
     `(show-paren-mismatch ((t (:background ,my-warning :weight extra-bold ))))
-    `(sp-show-pair-match-face ((t (:background ,my-active :height 1.25 :weight extra-bold ))))
-    `(sp-show-pair-match-content-face ((t (:background ,my-active :height 1.25 :weight extra-bold ))))
+    `(sp-show-pair-match-face ((t (:family ,font-mono :background ,my-active :height 1.25 ))))
+    `(sp-show-pair-match-content-face ((t (:background ,my-active :height 1.25 :weight bold ))))
     `(sp-show-pair-mismatch-face ((t (:background ,my-warning :weight extra-bold ))))
     `(sp-pair-overlay-face ((t (:background ,my-contrast ))))
 
@@ -199,7 +201,7 @@
     `(helm-header ((t ( :foreground ,my-white ))))
     `(helm-header-line-left-margin ((t (:background ,my-info :foreground ,my-shadow ))))
     `(helm-match ((t (:foreground ,my-visited :weight bold ))))
-    `(helm-minibuffer-prompt ((t (:foreground ,my-pop)qq)))
+    `(helm-minibuffer-prompt ((t (:foreground ,my-pop) )))
     `(helm-no-file-buffer-modified ((t (:foreground ,my-info ))))
     `(helm-prefarg ((t (:foreground ,my-visited ))))
     `(helm-selection ((t (:foreground ,my-deepcontrast :background ,my-info ))))
@@ -220,14 +222,14 @@
     ;; ========================================
     `(magit-section-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
     `(magit-diff-added ((t (:foreground ,my-highlight :background ,my-deepcontrast ))))
-    `(magit-diff-added-highlight ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
-    `(magit-diff-removed ((t (:foreground ,my-warning :background ,my-deepcontrast))))
-    `(magit-diff-removed-highlight ((t (:foreground ,my-warning :background ,my-deepcontrast))))
-    `(magit-diff-hunk-heading-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
+    `(magit-diff-added-highlight ((t (:foreground ,my-highlight :background ,my-deepcontrast ))))
+    `(magit-diff-removed ((t (:foreground ,my-warning :background ,my-deepcontrast ))))
+    `(magit-diff-removed-highlight ((t (:foreground ,my-warning :background ,my-deepcontrast ))))
+    `(magit-diff-hunk-heading-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast))))
 
         ;; man
     ;; ========================================
-    `(man-mode-hook ((t (:family ,font-mono))))
+    `(man-mode-hook ((t (:family ,font-mono ))))
     `(man-follow ((t (:foreground ,my-active ))))
     `(man-overstrike ((t (:foreground ,my-pop ))))
 
@@ -243,13 +245,13 @@
     `(org-agenda-date-weekend ((t (:foreground ,my-deepcontrast ))))
     `(org-agenda-done ((t (:slant italic :foreground ,my-contrast :strike-through t ))))
     `(org-agenda-structure ((t (:slant italic :foreground ,my-pop ))))
-    `(org-imminent-deadline ((t (:foreground ,my-warning))))
+    `(org-imminent-deadline ((t (:foreground ,my-warning ))))
     `(org-deadline-past-days ((t (:foreground ,my-warning ))))
     `(org-deadline-warning-days ((t (:foreground ,my-warning ))))
     `(org-upcoming-deadline ((t (:foreground ,my-visited :slant italic ))))
     `(org-priority ((t (:family ,font-mono :foreground ,my-visited :slant normal  ))))
     `(org-block-begin-line ((t (:foreground ,my-shadow :background ,my-contrast ))))
-    `(org-block ((t (:foreground ,my-pop :background ,my-deepcontrast ))))
+    `(org-block ((t ( :family ,font-mono :foreground ,my-pop :background ,my-deepcontrast ))))
     `(org-block-end-line ((t (:foreground ,my-shadow :background ,my-contrast ))))
     `(org-date ((t (:foreground ,my-visited ))))
     `(org-document-info ((t :(:height 1.25 foreground ,my-visited ))))
@@ -269,6 +271,7 @@
     `(org-scheduled-today ((t :foreground ,my-highlight )))
     `(org-src-block-faces ((t :family ,font-mono )))
     `(org-special-keyword ((t :family ,font-default :foreground ,my-contrast )))
+    `(org-table-hlines ((t :family ,font-mono )))
     `(org-table ((t :family ,font-mono :foreground ,my-contrast )))
     `(org-tag ((t (:foreground ,my-active ))))
     `(org-todo ((t (:foreground ,my-info ))))
@@ -278,7 +281,7 @@
     `(speedbar-directory-face ((t :family ,font-mono :foreground ,my-contrast t )))
     `(speedbar-file-face ((t (:family ,font-mono :foreground ,my-contrast ))))
     `(speedbar-selected-face ((t (:weight extra-bold :foreground ,my-highlight ))))
-    `(speedbar-highlight-face ((t (:foreground ,my-active))))
+    `(speedbar-highlight-face ((t (:foreground ,my-active ))))
     `(speedbar- ((t (:foreground ,my-active ))))
     `(speedbar-button-face ((t (:foreground ,my-pop ))))
 
