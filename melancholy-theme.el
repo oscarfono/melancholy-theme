@@ -22,7 +22,7 @@
 ;;
 ;;    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
 ;;    - texlive-fonts-extra
-;;    - texlive-sourcecodepro.
+;;    - texlive-sourcecodepro
 ;;    - fonts-purisa || thai-scalable-purisa-fonts
 ;;    - fonts-dancingscript
 ;;
@@ -65,7 +65,7 @@
  ;; ========================================
 
     `(default ((t (
-                   :family ,font-default
+                   :family ,font-mono
                    :width normal
                    :weight regular
                    :slant normal
