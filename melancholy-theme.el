@@ -22,7 +22,7 @@
 ;;
 ;;    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
 ;;    - texlive-fonts-extra
-;;    - texlive-sourcecodepro
+;;    - texlive-sourcecodepro.
 ;;    - fonts-purisa || thai-scalable-purisa-fonts
 ;;    - fonts-dancingscript
 ;;
@@ -56,13 +56,11 @@
      (my-white              "#FFFFFF" ))
 
 ;; Theme Faces
-;; ========================================
-
   (custom-theme-set-faces
     'melancholy
 
- ;; default
- ;; ========================================
+    ;; default
+    ;; ========================================
 
     `(default ((t (
                    :family ,font-mono
@@ -76,8 +74,7 @@
                    :strike-through nil
                    :box nil
                    :inverse-video nil
-                   :stipple nil
-                   :inherit nil ))))
+                   :stipple nil ))))
 
     ;; window and frame settings
     ;; ========================================
@@ -165,6 +162,16 @@
     `(dired-faces ((t (:family ,font-mono ))))
     `(dired-header ((t (:family ,font-mono :foreground ,my-pop ))))
     `(dired-directory-face ((t (:family ,font-mono ))))
+
+    ;; erc
+    ;; ========================================
+    `(erc-current-nick-face ((t (:foreground ,my-highlight ))))
+    `(erc-error-face ((t (:foreground ,my-warning ))))
+    `(erc-input-face ((t (:foreground ,my-visited ))))
+    `(erc-nick-default-face ((t (:family ,font-mono :foreground ,my-visited ))))
+    `(erc-nick-message-face ((t (:foreground ,my-pop ))))
+    `(erc-notice-face ((t (:foreground ,my-visited ))))
+    `(erc-timestamp-face ((t (:foreground ,my-highlight ))))
 
     ;; flycheck
     ;; ========================================
