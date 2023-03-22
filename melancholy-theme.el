@@ -166,9 +166,10 @@
     ;; erc
     ;; ========================================
     `(erc-current-nick-face ((t (:foreground ,my-highlight ))))
+    `(erc-default-face ((t (:foreground ,my-white ))))
     `(erc-error-face ((t (:foreground ,my-warning ))))
-    `(erc-input-face ((t (:foreground ,my-visited ))))
-    `(erc-nick-default-face ((t (:family ,font-mono :foreground ,my-visited ))))
+    `(erc-input-face ((t (:foreground ,my-pop ))))
+    `(erc-nick-default-face ((t (:family ,font-mono :foreground ,my-info ))))
     `(erc-nick-message-face ((t (:foreground ,my-pop ))))
     `(erc-notice-face ((t (:foreground ,my-visited ))))
     `(erc-timestamp-face ((t (:foreground ,my-highlight ))))
