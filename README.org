@@ -5,23 +5,39 @@
 * Screenshots
 #+CAPTION: melancholy code preview 1
 #+NAME: fig.code-preview-1
-
-[[file:screens/melancholy-code-preview-1.png][melancholy code preview #1]]
+[[file:screens/melancholy-code-preview-1.png][melancholy-code-preview-1.png]]
 
 #+CAPTION: melancholy code preview 2
 #+NAME: fig.code-preview-2
-[[file:screens/melancholy-code-preview-2.png][melancholy code preview #2]]
+[[file:screens/melancholy-code-preview-2.png][melancholy-code-preview-2.png]]
+
+#+CAPTION: melancholy code preview 3
+#+NAME: fig.code-preview-3
+[[file:screens/melancholy-code-preview-3.png][melancholy-code-preview-3.png]]
 
 #+CAPTION: melancholy helm over terminal buffer
 #+NAME: fig.helm-preview
-[[file:screens/melancholy-helm-over-terminal-buffer-preview.png][melancholy helm over a terminal buffer preview]]
+[[file:screens/melancholy-helm-over-terminal-buffer-preview.png][melancholy-helm-over-terminal-buffer-preview.png]]
+
+#+CAPTION: melancholy erc buffer
+#+NAME: fig.erc-preview
+[[file:screens/melancholy-erc-preview.png][melancholy-erc-preview.png]]
+
+#+CAPTION: melancholy orgmode buffer
+#+NAME: fig.orgmode-preview
+[[file:screens/melancholy-orgmode-preview.png][melancholy-orgmode-preview.png]]
+
+#+CAPTION: melancholy org-agenda buffer
+#+NAME: fig.org-agenda-preview
+[[file:screens/melancholy-org-agenda-preview.png][melancholy-org-agenda-preview.png]]
 
 
 * Installation
+You may either install manually, or through Melpa.
+
 ** Manual
 
 Download melancholy-theme.el to the directory ~/.emacs.d/themes/.  Add this to your .emacs:
-
 
 #+begin_example elisp
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -39,9 +55,9 @@ Now you can load the theme with the interactive function load-theme like this:
 
 ** Melpa
 
-Melancholy is not yet available in  MELPA.
+Melancholy is available in  MELPA.
 
-Soon, hopefully, you will be able to  install melancholy with the following command:
+Install melancholy with the following command:
 
 #+begin_example elisp
 
@@ -54,9 +70,10 @@ or with use-package:
 #+begin_example elisp
 
 (use-package melancholy
-  :ensure t))
+  :ensure t)
 
 #+end_example
+
 
 To load it automatically on Emacs startup add this to your init file:
 
@@ -66,9 +83,6 @@ To load it automatically on Emacs startup add this to your init file:
  (load-theme 'melancholy t)
 
 #+end_example
-
-
-
 
 
 [[https://thenounproject.com/icon/melancholy-1994623/][melancholy vector design by evgeni moryakov]]
