@@ -2,7 +2,7 @@
 #+SUBTITLE: A dark emacs theme thats actually pretty sad really
 #+AUTHOR: @baaash
 
-./melancholy.png
+[[./melancholy.png]]
 
  A dark theme thats pretty sad really.
 
