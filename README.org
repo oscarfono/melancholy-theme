@@ -2,6 +2,10 @@
 #+SUBTITLE: A dark emacs theme thats actually pretty sad really
 #+AUTHOR: @baaash
 
+./melancholy.png
+
+ A dark theme thats pretty sad really.
+
 * Screenshots
 #+CAPTION: melancholy code preview 1
 #+NAME: fig.code-preview-1
@@ -31,6 +35,33 @@
 #+NAME: fig.org-agenda-preview
 [[file:screens/melancholy-org-agenda-preview.png][melancholy-org-agenda-preview.png]]
 
+* Before Installing
+
+You should use an Emacs verison > Emacs 27.1
+
+Please note, that in order for the theme to display as intended, you should install the following fonts:
+
+    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
+    - texlive-sourcecodepro
+    - fonts-purisa || thai-scalable-purisa-fonts
+    - fonts-dancingscript
+
+Sorry some of them you'll have to find and install manually.
+
+For Fedora etc, these exist in repo:
+
+#+begin_example shell
+
+sudo dnf install -y impallari-dancing-script-fonts texlive-sourcecodepro thai-scalable-purisa-fonts
+
+#+end_example
+
+For Ubuntu, these exist in repo:
+#+begin_example shell
+
+sudo apt install -y texlive-fonts-extra fonts-tlwg-purisa
+
+#+end_example
 
 * Installation
 You may either install manually, or through Melpa.
