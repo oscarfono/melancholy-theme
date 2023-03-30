@@ -7,8 +7,8 @@
 ;; Created: 30 August 2022
 ;; Last Modified: 24 March 2023
 
-;; Version: 1.0.7
-;; SPDX-License-Identifier:  GPL-3.0
+;; Version: 2.0
+;;
 ;; Package-requires: ((emacs "27.1"))
 
 ;; Keywords: faces, frames
@@ -122,7 +122,7 @@
    `(font-lock-regexp-grouping-construct ((t ( :foreground ,my-pop  ))))
    `(font-lock-string-face ((t ( :family ,font-mono :foreground ,my-visited :height 1.25 :weight extra-light :slant italic ))))
    `(font-lock-type-face ((t ( :family ,font-mono :foreground ,my-highlight ))))
-   `(font-lock-variable-name-face ((t ( :family ,font-mono :foreground ,my-contrast ))))
+   `(font-lock-variable-name-face ((t ( :family ,font-mono :foreground ,my-highlight ))))
    `(font-lock-warning-face ((t ( :family ,font-mono :foreground ,my-warning ))))
    `(tooltip ((t (:foreground ,my-contrast :background ,my-info ))))
    `(trailing-whitespace ((t (:background ,my-warning ))))
