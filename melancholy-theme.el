@@ -15,7 +15,7 @@
 
 ;;; Commentary:
 ;; ========================================
-;; A dark theme that’s pretty sad really. Requires Emacs 27.1 or later.
+;; A dark theme that’s pretty sad really.  Requires Emacs 27.1 or later.
 ;;
 ;; Ensure the following fonts are installed before use:
 ;;
@@ -297,12 +297,7 @@
    `(term-color-magenta ((t (:family ,font-mono :foreground ,my-active))))
    `(term-color-red ((t (:family ,font-mono :foreground ,my-warning))))
    `(term-color-white ((t (:family ,font-mono :foreground ,my-white))))
-   `(term-bold ((t (:foreground ,my-highlight))))
-
-   ;; Vertico & Corfu (optional modern additions)
-   ;; ========================================
-   `(vertico-current ((t (:background ,my-contrast :foreground ,my-hicontrast))))
-   `(corfu-current ((t (:background ,my-contrast :foreground ,my-hicontrast)))))
+   `(term-bold ((t (:foreground ,my-highlight)))))
 
 ;;;###autoload
 (when load-file-name
