@@ -30,7 +30,7 @@
 ;;; Code:
 ;; ========================================
 
-(deftheme melancholy-theme
+(deftheme melancholy
   "A dark theme that’s pretty sad really.")
 
 (let ((font-heading "ImpactLabel")
@@ -53,22 +53,22 @@
 
   ;; Theme Faces
   (custom-theme-set-faces
-   'melancholy-theme
+   'melancholy
 
    ;; Default
    ;; ========================================
    `(default ((t (:family ,font-mono
-                  :width normal
-                  :weight regular
-                  :slant normal
-                  :foreground ,my-hicontrast
-                  :background ,my-shadow
-                  :underline nil
-                  :overline nil
-                  :strike-through nil
-                  :box nil
-                  :inverse-video nil
-                  :stipple nil))))
+                          :width normal
+                          :weight regular
+                          :slant normal
+                          :foreground ,my-hicontrast
+                          :background ,my-shadow
+                          :underline nil
+                          :overline nil
+                          :strike-through nil
+                          :box nil
+                          :inverse-video nil
+                          :stipple nil))))
 
    ;; Window and Frame Settings
    ;; ========================================
@@ -88,7 +88,7 @@
    ;; Base Settings
    ;; ========================================
    `(cursor ((t (:background ,my-hicontrast))))
-   `(region ((t (:background ,my-deepcontrast :foreground unspecified :extend t))))
+   `(region ((t (:background ,my-deepcontrast :extend t))))
    `(query-replace ((t (:inherit isearch))))
    `(match ((t (:background ,my-pop))))
    `(highlight ((t (:foreground ,my-pop :background ,my-contrast))))
@@ -306,6 +306,6 @@
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'melancholy-theme)
+(provide-theme 'melancholy)
 
 ;;; melancholy-theme.el ends here
