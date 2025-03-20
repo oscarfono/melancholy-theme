@@ -30,7 +30,7 @@
 ;;; Code:
 ;; ========================================
 
-(deftheme melancholy
+(deftheme melancholy-theme
   "A dark theme that’s pretty sad really.")
 
 (let ((font-heading "ImpactLabel")
@@ -53,7 +53,7 @@
 
   ;; Theme Faces
   (custom-theme-set-faces
-   'melancholy
+   'melancholy-theme
 
    ;; Default
    ;; ========================================
@@ -297,13 +297,15 @@
    `(term-color-magenta ((t (:family ,font-mono :foreground ,my-active))))
    `(term-color-red ((t (:family ,font-mono :foreground ,my-warning))))
    `(term-color-white ((t (:family ,font-mono :foreground ,my-white))))
-   `(term-bold ((t (:foreground ,my-highlight)))))
+   `(term-bold ((t (:foreground ,my-highlight))))
+   )  ;; Closes custom-theme-set-faces
+  )   ;; Closes let
 
 ;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path
                (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'melancholy)
+(provide-theme 'melancholy-theme)
 
 ;;; melancholy-theme.el ends here
