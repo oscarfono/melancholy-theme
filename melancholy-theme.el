@@ -5,9 +5,9 @@
 ;; Author: Cooper Oscarfono
 ;; Maintainer: Cooper Oscarfono
 ;; Created: 30 August 2022
-;; Last Modified: 18 March 2025
+;; Last Modified: 18 August 2025
 
-;; Version: 2.1
+;; Version: 3.1
 ;; Package-Requires: ((emacs "27.1"))
 
 ;; Keywords: faces, frames
@@ -19,11 +19,9 @@
 ;;
 ;; Ensure the following fonts are installed before use:
 ;;
-;;    - "Impact Label" (https://www.fontsquirrel.com/fonts/download/impact-label)
-;;    - "TeX Live: Source Code Pro" (package: texlive-sourcecodepro)
-;;    - "Purisa" (package: fonts-purisa or thai-scalable-purisa-fonts)
-;;    - "Dancing Script" (package: fonts-dancingscript)
-;;    - "Open Sans Condensed" (package: fonts-opensans or similar)
+;;    - CommitMono (https://commitmono.com)
+;;    - Caveat (https://fonts.googleapis.com/css2?family=Caveat)
+;;    - Raleway (nix packages)
 ;;
 ;; ========================================
 
@@ -33,11 +31,11 @@
 (deftheme melancholy
   "A dark theme that’s pretty sad really.")
 
-(let ((font-heading "ImpactLabel")
-      (font-cursive "Dancingscript")
-      (font-default "Purisa")
-      (font-mono "SourceCodePro")
-      (font-sans "OpenSansCondensed")
+(let ((font-heading "Raleway-Regular")
+      (font-cursive "Caveat")
+      (font-default "CommitMono")
+      (font-mono "CommitMono")
+      (font-sans "Raleway-Thin")
       (my-fluff "#FCDEEA")
       (my-active "#F92672")
       (my-visited "#999999")
@@ -57,7 +55,7 @@
 
    ;; Default
    ;; ========================================
-   `(default ((t (:family ,font-mono
+   `(default ((t (:family ,font-default
                           :width normal
                           :weight regular
                           :slant normal
@@ -94,7 +92,7 @@
    `(highlight ((t (:foreground ,my-pop :background ,my-contrast))))
    `(lazy-highlight ((t (:foreground ,my-shadow :background ,my-highlight))))
    `(fixed-pitch ((t (:family ,font-mono))))
-   `(variable-pitch ((t (:family ,font-sans :height 99 :weight normal))))
+   `(variable-pitch ((t (:family ,font-sans :weight normal))))
    `(bold ((t (:weight bold))))
    `(italic ((t (:slant italic))))
    `(bold-italic ((t (:weight bold :slant italic))))
@@ -105,16 +103,16 @@
    `(secondary-selection ((t (:background ,my-fluff))))
    `(font-lock-builtin-face ((t (:foreground ,my-pop))))
    `(font-lock-comment-delimiter-face ((t (:foreground ,my-visited))))
-   `(font-lock-comment-face ((t (:foreground ,my-visited :height 1.25))))
+   `(font-lock-comment-face ((t (:foreground ,my-visited ))))
    `(font-lock-constant-face ((t (:foreground ,my-info))))
    `(font-lock-doc-face ((t (:foreground ,my-info))))
    `(font-lock-function-name-face ((t (:foreground ,my-pop))))
-   `(font-lock-keyword-face ((t (:family ,font-sans :height 1.4 :foreground ,my-active))))
+   `(font-lock-keyword-face ((t (:family ,font-sans :foreground ,my-active))))
    `(font-lock-negation-char-face ((t (:foreground ,my-active))))
    `(font-lock-preprocessor-face ((t (:foreground ,my-active))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,my-pop))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,my-pop))))
-   `(font-lock-string-face ((t (:foreground ,my-visited :height 1.25 :weight extra-light :slant italic))))
+   `(font-lock-string-face ((t (:foreground ,my-visited :weight extra-light :slant italic))))
    `(font-lock-type-face ((t (:foreground ,my-highlight))))
    `(font-lock-variable-name-face ((t (:foreground ,my-highlight))))
    `(font-lock-warning-face ((t (:foreground ,my-warning))))
@@ -126,7 +124,7 @@
    `(show-paren-match ((t (:background ,my-shadow :weight extra-bold :foreground ,my-pop))))
    `(show-paren-mismatch ((t (:background ,my-warning :weight extra-bold))))
    `(sp-show-pair-match-face ((t (:background ,my-active :foreground unspecified :height 1.25))))
-   `(sp-show-pair-match-content-face ((t (:background ,my-deepcontrast :foreground unspecified :height 1.1))))
+   `(sp-show-pair-match-content-face ((t (:background ,my-deepcontrast :foreground unspecified :height 1.25))))
    `(sp-show-pair-mismatch-face ((t (:background ,my-warning :weight extra-bold))))
    `(sp-pair-overlay-face ((t (:background ,my-contrast))))
 
@@ -256,16 +254,16 @@
    `(org-date ((t (:foreground ,my-visited))))
    `(org-document-info ((t (:height 1.25 :foreground ,my-visited))))
    `(org-document-info-keyword ((t (:foreground ,my-contrast))))
-   `(org-document-title ((t (:family ,font-cursive :foreground ,my-info :height 4.20 :weight extra-bold))))
+   `(org-document-title ((t (:family ,font-cursive :foreground ,my-info :height 2 :weight extra-bold))))
    `(org-done ((t (:foreground ,my-contrast :strike-through t))))
    `(org-headline-done ((t (:foreground ,my-contrast :strike-through t))))
-   `(org-level-1 ((t (:family ,font-sans :height 2.6 :weight bold))))
-   `(org-level-2 ((t (:family ,font-sans :foreground ,my-contrast :height 2.4 :weight bold :slant italic))))
-   `(org-level-3 ((t (:family ,font-sans :foreground ,my-active :height 1.8 :weight regular))))
-   `(org-level-4 ((t (:family ,font-sans :foreground ,my-contrast :height 1.6 :weight regular))))
-   `(org-level-5 ((t (:family ,font-sans :height 1.4 :weight regular))))
-   `(org-level-6 ((t (:family ,font-sans :height 1.2 :weight regular))))
-   `(org-level-7 ((t (:family ,font-sans :foreground ,my-contrast :height 1.1 :weight regular))))
+   `(org-level-1 ((t (:family ,font-sans :weight bold))))
+   `(org-level-2 ((t (:family ,font-sans :foreground ,my-contrast  :weight bold :slant italic))))
+   `(org-level-3 ((t (:family ,font-sans :foreground ,my-active :weight regular))))
+   `(org-level-4 ((t (:family ,font-sans :foreground ,my-contrast :weight regular))))
+   `(org-level-5 ((t (:family ,font-sans :weight regular))))
+   `(org-level-6 ((t (:family ,font-sans :weight regular))))
+   `(org-level-7 ((t (:family ,font-sans :foreground ,my-contrast :weight regular))))
    `(org-link ((t (:foreground ,my-active :underline t))))
    `(org-scheduled ((t (:foreground ,my-info))))
    `(org-scheduled-today ((t (:foreground ,my-highlight))))
