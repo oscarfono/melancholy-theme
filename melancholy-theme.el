@@ -7,7 +7,7 @@
 ;; Created: 30 August 2022
 ;; Last Modified: 13 March 2026
 
-;; Version: 3.2
+;; Version: 3.3
 ;; Package-Requires: ((emacs "27.1"))
 
 ;; Keywords: faces, frames
@@ -23,6 +23,11 @@
 ;;    - Caveat (https://fonts.googleapis.com/css2?family=Caveat)
 ;;    - Raleway (nix packages)
 ;;
+;; Font families are specified without weight/style suffixes (e.g. "CommitMono"
+;; not "CommitMono-Regular").  Emacs resolves weight and slant via face
+;; attributes, not the family string.  Using suffixed names causes silent
+;; font lookup failures on most systems.
+;;
 ;; ========================================
 
 ;;; Code:
@@ -31,13 +36,9 @@
 (deftheme melancholy
   "A dark theme that's pretty sad really.")
 
-(let ((font-heading  "Raleway-Regular")
-      (font-cursive  "Caveat")
-      (font-default  "CommitMono-Regular")
-      (font-bold     "CommitMono-Bold")
-      (font-italic   "CommitMono-Italic")
-      (font-mono     "CommitMono-Regular")
-      (font-sans     "Raleway-Thin")
+(let ((font-mono    "CommitMono")
+      (font-sans    "Raleway")
+      (font-cursive "Caveat")
       (my-fluff        "#FCDEEA")
       (my-active       "#F92672")
       (my-visited      "#999999")
@@ -56,7 +57,7 @@
 
    ;; Default
    ;; ========================================
-   `(default ((t (:family ,font-default
+   `(default ((t (:family ,font-mono
                   :width normal
                   :weight regular
                   :slant normal
@@ -69,9 +70,10 @@
                   :inverse-video nil
                   :stipple nil))))
 
-   ;; Fixed and variable pitch — used by mixed-pitch-mode and org-mode
-   `(fixed-pitch    ((t (:family ,font-mono))))
-   `(variable-pitch ((t (:family ,font-sans :weight normal))))
+   ;; fixed-pitch and variable-pitch are the two roots mixed-pitch-mode
+   ;; uses to split mono vs proportional faces in org buffers.
+   `(fixed-pitch    ((t (:family ,font-mono :weight regular :slant normal))))
+   `(variable-pitch ((t (:family ,font-sans  :weight normal  :slant normal))))
 
    ;; Window and Frame
    ;; ========================================
@@ -110,17 +112,17 @@
    ;; ========================================
    `(font-lock-builtin-face              ((t (:foreground ,my-pop))))
    `(font-lock-comment-delimiter-face    ((t (:foreground ,my-visited))))
-   `(font-lock-comment-face              ((t (:family ,font-italic :foreground ,my-visited :slant italic))))
+   `(font-lock-comment-face              ((t (:foreground ,my-visited :slant italic))))
    `(font-lock-constant-face             ((t (:foreground ,my-info))))
    `(font-lock-doc-face                  ((t (:foreground ,my-info))))
-   `(font-lock-function-name-face        ((t (:family ,font-bold :foreground ,my-pop))))
-   `(font-lock-keyword-face              ((t (:family ,font-bold :foreground ,my-active))))
+   `(font-lock-function-name-face        ((t (:foreground ,my-pop :weight bold))))
+   `(font-lock-keyword-face              ((t (:foreground ,my-active :weight bold))))
    `(font-lock-negation-char-face        ((t (:foreground ,my-active))))
    `(font-lock-preprocessor-face        ((t (:foreground ,my-active))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,my-pop))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,my-pop))))
-   `(font-lock-string-face               ((t (:family ,font-italic :foreground ,my-white :weight extra-light :slant italic))))
-   `(font-lock-type-face                 ((t (:family ,font-bold :foreground ,my-highlight))))
+   `(font-lock-string-face               ((t (:foreground ,my-white :weight light :slant italic))))
+   `(font-lock-type-face                 ((t (:foreground ,my-highlight :weight bold))))
    `(font-lock-variable-name-face        ((t (:foreground ,my-highlight))))
    `(font-lock-warning-face              ((t (:foreground ,my-warning))))
 
@@ -156,10 +158,10 @@
    ;; Dired
    ;; ========================================
    `(dired-header    ((t (:foreground ,my-pop))))
-   `(dired-directory ((t (:family ,font-mono :foreground ,my-pop :weight bold))))
-   `(dired-file-name ((t (:family ,font-mono))))
-   `(dired-symlink   ((t (:family ,font-mono :foreground ,my-active))))
-   `(dired-ignored   ((t (:family ,font-mono :foreground ,my-contrast))))
+   `(dired-directory ((t (:inherit fixed-pitch :foreground ,my-pop :weight bold))))
+   `(dired-file-name ((t (:inherit fixed-pitch))))
+   `(dired-symlink   ((t (:inherit fixed-pitch :foreground ,my-active))))
+   `(dired-ignored   ((t (:inherit fixed-pitch :foreground ,my-contrast))))
 
    ;; ERC
    ;; ========================================
@@ -208,7 +210,7 @@
    `(helm-prefarg                    ((t (:foreground ,my-visited))))
    `(helm-selection                  ((t (:foreground ,my-deepcontrast :background ,my-info))))
    `(helm-separator                  ((t (:background ,my-deepcontrast))))
-   `(helm-source-header              ((t (:family ,font-heading :height 1.9 :foreground ,my-contrast :underline t))))
+   `(helm-source-header              ((t (:family ,font-sans :height 1.9 :foreground ,my-contrast :underline t))))
    `(helm-visible-mark               ((t (:background ,my-visited))))
 
    ;; Heredocs
@@ -251,10 +253,10 @@
    `(org-deadline-warning-days  ((t (:foreground ,my-warning))))
    `(org-upcoming-deadline      ((t (:foreground ,my-visited :slant italic))))
    `(org-priority               ((t (:inherit fixed-pitch :foreground ,my-visited :slant normal))))
-   `(org-block-begin-line       ((t (:foreground ,my-shadow :background ,my-contrast))))
-   `(org-block                  ((t (:inherit fixed-pitch :foreground ,my-pop :background ,my-deepcontrast :extend t))))
-   `(org-block-end-line         ((t (:foreground ,my-shadow :background ,my-contrast))))
-   `(org-date                   ((t (:foreground ,my-visited))))
+   `(org-block-begin-line      ((t (:inherit fixed-pitch :foreground ,my-shadow :background ,my-contrast))))
+   `(org-block                 ((t (:inherit fixed-pitch :foreground ,my-pop :background ,my-deepcontrast :extend t))))
+   `(org-block-end-line        ((t (:inherit fixed-pitch :foreground ,my-shadow :background ,my-contrast))))
+   `(org-date                  ((t (:inherit fixed-pitch :foreground ,my-visited))))
    `(org-document-info          ((t (:height 1.25 :foreground ,my-visited))))
    `(org-document-info-keyword  ((t (:foreground ,my-contrast))))
    `(org-document-title         ((t (:family ,font-cursive :foreground ,my-info :height 2 :weight extra-bold))))
@@ -270,7 +272,7 @@
    `(org-link           ((t (:foreground ,my-active :underline t))))
    `(org-scheduled      ((t (:foreground ,my-info))))
    `(org-scheduled-today ((t (:foreground ,my-highlight))))
-   `(org-special-keyword ((t (:family ,font-default :foreground ,my-contrast))))
+   `(org-special-keyword ((t (:inherit fixed-pitch :foreground ,my-contrast))))
    `(org-table          ((t (:inherit fixed-pitch :foreground ,my-contrast))))
    `(org-tag            ((t (:foreground ,my-active))))
    `(org-todo           ((t (:foreground ,my-info))))
@@ -279,8 +281,8 @@
 
    ;; Speedbar
    ;; ========================================
-   `(speedbar-directory-face ((t (:family ,font-mono :foreground ,my-contrast))))
-   `(speedbar-file-face      ((t (:family ,font-mono :foreground ,my-contrast))))
+   `(speedbar-directory-face ((t (:inherit fixed-pitch :foreground ,my-contrast))))
+   `(speedbar-file-face      ((t (:inherit fixed-pitch :foreground ,my-contrast))))
    `(speedbar-selected-face  ((t (:weight extra-bold :foreground ,my-highlight))))
    `(speedbar-highlight-face ((t (:foreground ,my-active))))
    `(speedbar-button-face    ((t (:foreground ,my-pop))))
