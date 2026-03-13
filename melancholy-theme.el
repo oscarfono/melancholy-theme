@@ -5,9 +5,9 @@
 ;; Author: Cooper Oscarfono
 ;; Maintainer: Cooper Oscarfono
 ;; Created: 30 August 2022
-;; Last Modified: 18 August 2025
+;; Last Modified: 13 March 2026
 
-;; Version: 3.1
+;; Version: 3.2
 ;; Package-Requires: ((emacs "27.1"))
 
 ;; Keywords: faces, frames
@@ -15,7 +15,7 @@
 
 ;;; Commentary:
 ;; ========================================
-;; A dark theme that’s pretty sad really.  Requires Emacs 27.1 or later.
+;; A dark theme that's pretty sad really.  Requires Emacs 27.1 or later.
 ;;
 ;; Ensure the following fonts are installed before use:
 ;;
@@ -29,143 +29,148 @@
 ;; ========================================
 
 (deftheme melancholy
-  "A dark theme that’s pretty sad really.")
+  "A dark theme that's pretty sad really.")
 
-(let ((font-heading "Raleway-Regular")
-      (font-cursive "Caveat")
-      (font-default "CommitMono-Regular")
-      (font-default-bold "CommitMono-Bold")
-      (font-default-italic "CommitMono-Italic")
-      (font-mono "CommitMono-Regular")
-      (font-sans "Raleway-Thin")
-      (my-fluff "#FCDEEA")
-      (my-active "#F92672")
-      (my-visited "#999999")
-      (my-info "#FFB728")
-      (my-highlight "#96BF33")
-      (my-contrast "#666666")
+(let ((font-heading  "Raleway-Regular")
+      (font-cursive  "Caveat")
+      (font-default  "CommitMono-Regular")
+      (font-bold     "CommitMono-Bold")
+      (font-italic   "CommitMono-Italic")
+      (font-mono     "CommitMono-Regular")
+      (font-sans     "Raleway-Thin")
+      (my-fluff        "#FCDEEA")
+      (my-active       "#F92672")
+      (my-visited      "#999999")
+      (my-info         "#FFB728")
+      (my-highlight    "#96BF33")
+      (my-contrast     "#666666")
       (my-deepcontrast "#444444")
-      (my-hicontrast "#DEDEDE")
-      (my-shadow "#333333")
-      (my-pop "#00B7FF")
-      (my-warning "#FF6969")
-      (my-white "#FFFFFF"))
+      (my-hicontrast   "#DEDEDE")
+      (my-shadow       "#333333")
+      (my-pop          "#00B7FF")
+      (my-warning      "#FF6969")
+      (my-white        "#FFFFFF"))
 
-  ;; Theme Faces
   (custom-theme-set-faces
    'melancholy
 
    ;; Default
    ;; ========================================
    `(default ((t (:family ,font-default
-                          :width normal
-                          :weight regular
-                          :slant normal
-                          :foreground ,my-hicontrast
-                          :background ,my-shadow
-                          :underline nil
-                          :overline nil
-                          :strike-through nil
-                          :box nil
-                          :inverse-video nil
-                          :stipple nil))))
+                  :width normal
+                  :weight regular
+                  :slant normal
+                  :foreground ,my-hicontrast
+                  :background ,my-shadow
+                  :underline nil
+                  :overline nil
+                  :strike-through nil
+                  :box nil
+                  :inverse-video nil
+                  :stipple nil))))
 
-   ;; Window and Frame Settings
+   ;; Fixed and variable pitch — used by mixed-pitch-mode and org-mode
+   `(fixed-pitch    ((t (:family ,font-mono))))
+   `(variable-pitch ((t (:family ,font-sans :weight normal))))
+
+   ;; Window and Frame
    ;; ========================================
-   `(fringe ((t (:inherit default))))
-   `(header-line ((t (:foreground ,my-hicontrast :background ,my-shadow))))
-   `(hl-line ((t (:background ,my-contrast :extend t))))
-   `(menu-bar ((t (:foreground ,my-deepcontrast :background ,my-shadow))))
-   `(scroll-bar ((t (:foreground ,my-shadow :background ,my-visited))))
+   `(fringe          ((t (:inherit default))))
+   `(header-line     ((t (:foreground ,my-hicontrast :background ,my-shadow))))
+   `(hl-line         ((t (:background ,my-contrast :extend t))))
+   `(menu            ((t (:foreground ,my-hicontrast :background ,my-shadow))))
+   `(scroll-bar      ((t (:foreground ,my-shadow :background ,my-visited))))
    `(vertical-border ((t (:foreground ,my-contrast))))
 
    ;; Line Numbers
    ;; ========================================
-   `(linum ((t (:foreground ,my-deepcontrast))))
-   `(line-number ((t (:foreground ,my-deepcontrast))))
+   `(line-number              ((t (:foreground ,my-deepcontrast))))
    `(line-number-current-line ((t (:foreground ,my-highlight))))
 
-   ;; Base Settings
+   ;; Base
    ;; ========================================
-   `(cursor ((t (:background ,my-hicontrast))))
-   `(region ((t (:background ,my-deepcontrast :extend t))))
-   `(query-replace ((t (:inherit isearch))))
-   `(match ((t (:background ,my-pop))))
-   `(highlight ((t (:foreground ,my-pop :background ,my-contrast))))
-   `(lazy-highlight ((t (:foreground ,my-shadow :background ,my-highlight))))
-   `(fixed-pitch ((t (:family ,font-mono))))
-   `(variable-pitch ((t (:family ,font-sans :weight normal))))
-   `(bold ((t (:weight bold))))
-   `(italic ((t (:slant italic))))
-   `(bold-italic ((t (:weight bold :slant italic))))
-   `(shadow ((t (:background ,my-shadow))))
-   `(button ((t (:foreground ,my-active :underline (:color foreground-color :style line)))))
-   `(link ((t (:foreground ,my-active :underline t :weight bold))))
-   `(link-visited ((t (:foreground ,my-visited))))
+   `(cursor             ((t (:background ,my-hicontrast))))
+   `(region             ((t (:background ,my-deepcontrast :extend t))))
+   `(query-replace      ((t (:inherit isearch))))
+   `(match              ((t (:background ,my-pop))))
+   `(highlight          ((t (:foreground ,my-pop :background ,my-contrast))))
+   `(lazy-highlight     ((t (:foreground ,my-shadow :background ,my-highlight))))
+   `(bold               ((t (:weight bold))))
+   `(italic             ((t (:slant italic))))
+   `(bold-italic        ((t (:weight bold :slant italic))))
+   `(shadow             ((t (:background ,my-shadow))))
+   `(button             ((t (:foreground ,my-active :underline (:color foreground-color :style line)))))
+   `(link               ((t (:foreground ,my-active :underline t :weight bold))))
+   `(link-visited       ((t (:foreground ,my-visited))))
    `(secondary-selection ((t (:background ,my-fluff))))
-   `(font-lock-builtin-face ((t (:foreground ,my-pop))))
-   `(font-lock-comment-delimiter-face ((t (:foreground ,my-visited))))
-   `(font-lock-comment-face ((t (:family ,font-default-italic :foreground ,my-visited :slant italic))))
-   `(font-lock-constant-face ((t (:foreground ,my-info))))
-   `(font-lock-doc-face ((t (:foreground ,my-info))))
-   `(font-lock-function-name-face ((t (:family ,font-default-bold :foreground ,my-pop))))
-   `(font-lock-keyword-face ((t (:family ,font-default-bold :foreground ,my-active))))
-   `(font-lock-negation-char-face ((t (:foreground ,my-active))))
-   `(font-lock-preprocessor-face ((t (:foreground ,my-active))))
+   `(tooltip            ((t (:foreground ,my-contrast :background ,my-info))))
+   `(trailing-whitespace ((t (:background ,my-warning))))
+
+   ;; Font Lock
+   ;; ========================================
+   `(font-lock-builtin-face              ((t (:foreground ,my-pop))))
+   `(font-lock-comment-delimiter-face    ((t (:foreground ,my-visited))))
+   `(font-lock-comment-face              ((t (:family ,font-italic :foreground ,my-visited :slant italic))))
+   `(font-lock-constant-face             ((t (:foreground ,my-info))))
+   `(font-lock-doc-face                  ((t (:foreground ,my-info))))
+   `(font-lock-function-name-face        ((t (:family ,font-bold :foreground ,my-pop))))
+   `(font-lock-keyword-face              ((t (:family ,font-bold :foreground ,my-active))))
+   `(font-lock-negation-char-face        ((t (:foreground ,my-active))))
+   `(font-lock-preprocessor-face        ((t (:foreground ,my-active))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,my-pop))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,my-pop))))
-   `(font-lock-string-face ((t (:family ,font-default-italic :foreground ,my-white :weight extra-light :slant italic))))
-   `(font-lock-type-face ((t (:family ,font-default-bold :foreground ,my-highlight))))
-   `(font-lock-variable-name-face ((t (:foreground ,my-highlight))))
-   `(font-lock-warning-face ((t (:foreground ,my-warning))))
-   `(tooltip ((t (:foreground ,my-contrast :background ,my-info))))
-   `(trailing-whitespace ((t (:background ,my-warning))))
+   `(font-lock-string-face               ((t (:family ,font-italic :foreground ,my-white :weight extra-light :slant italic))))
+   `(font-lock-type-face                 ((t (:family ,font-bold :foreground ,my-highlight))))
+   `(font-lock-variable-name-face        ((t (:foreground ,my-highlight))))
+   `(font-lock-warning-face              ((t (:foreground ,my-warning))))
 
    ;; Parens / Smart-Parens
    ;; ========================================
-   `(show-paren-match ((t (:background ,my-shadow :weight extra-bold :foreground ,my-pop))))
-   `(show-paren-mismatch ((t (:background ,my-warning :weight extra-bold))))
-   `(sp-show-pair-match-face ((t (:background ,my-active :foreground unspecified :height 1.25))))
-   `(sp-show-pair-match-content-face ((t (:background ,my-deepcontrast :foreground unspecified :height 1.25))))
-   `(sp-show-pair-mismatch-face ((t (:background ,my-warning :weight extra-bold))))
-   `(sp-pair-overlay-face ((t (:background ,my-contrast))))
+   `(show-paren-match              ((t (:background ,my-shadow :weight extra-bold :foreground ,my-pop))))
+   `(show-paren-mismatch           ((t (:background ,my-warning :weight extra-bold))))
+   `(sp-show-pair-match-face       ((t (:background ,my-active :height 1.25))))
+   `(sp-show-pair-match-content-face ((t (:background ,my-deepcontrast :height 1.25))))
+   `(sp-show-pair-mismatch-face    ((t (:background ,my-warning :weight extra-bold))))
+   `(sp-pair-overlay-face          ((t (:background ,my-contrast))))
 
-   ;; Info/Errors
+   ;; Info / Errors
    ;; ========================================
-   `(success ((t (:foreground ,my-highlight))))
-   `(warning ((t (:foreground ,my-info))))
-   `(error ((t (:foreground ,my-warning :weight bold))))
+   `(success    ((t (:foreground ,my-highlight))))
+   `(warning    ((t (:foreground ,my-info))))
+   `(error      ((t (:foreground ,my-warning :weight bold))))
    `(next-error ((t (:inherit region))))
 
    ;; All The Icons
    ;; ========================================
-   `(all-the-icons-dcyan ((t (:foreground ,my-pop))))
+   `(all-the-icons-dcyan  ((t (:foreground ,my-pop))))
    `(all-the-icons-dgreen ((t (:foreground ,my-highlight))))
-   `(all-the-icons-dpink ((t (:foreground ,my-active))))
+   `(all-the-icons-dpink  ((t (:foreground ,my-active))))
 
    ;; Calendar
    ;; ========================================
-   `(calendar-today ((t (:weight bold :foreground ,my-highlight))))
+   `(calendar-today          ((t (:weight bold :foreground ,my-highlight))))
    `(calendar-weekday-header ((t (:foreground ,my-info))))
    `(calendar-weekend-header ((t (:foreground ,my-contrast))))
-   `(calendar-holiday-marker ((t (:foreground ,my-contrast))))
+   `(calendar-holiday        ((t (:foreground ,my-contrast))))
 
    ;; Dired
    ;; ========================================
-   `(dired-faces ((t (:family ,font-mono))))
-   `(dired-header ((t (:foreground ,my-pop))))
-   `(dired-directory-face ((t (:family ,font-mono))))
+   `(dired-header    ((t (:foreground ,my-pop))))
+   `(dired-directory ((t (:family ,font-mono :foreground ,my-pop :weight bold))))
+   `(dired-file-name ((t (:family ,font-mono))))
+   `(dired-symlink   ((t (:family ,font-mono :foreground ,my-active))))
+   `(dired-ignored   ((t (:family ,font-mono :foreground ,my-contrast))))
 
    ;; ERC
    ;; ========================================
    `(erc-current-nick-face ((t (:foreground ,my-highlight))))
-   `(erc-default-face ((t (:foreground ,my-white))))
-   `(erc-error-face ((t (:foreground ,my-warning))))
-   `(erc-input-face ((t (:foreground ,my-pop))))
+   `(erc-default-face      ((t (:foreground ,my-white))))
+   `(erc-error-face        ((t (:foreground ,my-warning))))
+   `(erc-input-face        ((t (:foreground ,my-pop))))
    `(erc-nick-default-face ((t (:foreground ,my-info))))
    `(erc-nick-message-face ((t (:foreground ,my-pop))))
-   `(erc-notice-face ((t (:foreground ,my-visited))))
-   `(erc-timestamp-face ((t (:foreground ,my-highlight))))
+   `(erc-notice-face       ((t (:foreground ,my-visited))))
+   `(erc-timestamp-face    ((t (:foreground ,my-highlight))))
 
    ;; Flycheck
    ;; ========================================
@@ -173,41 +178,38 @@
 
    ;; Gnus
    ;; ========================================
-   `(gnus-group-mail-3 ((t (:foreground ,my-highlight))))
-   `(gnus-group-mail-3-empty ((t (:foreground ,my-contrast))))
-   `(gnus-header-name ((t (:foreground ,my-active))))
-   `(gnus-header-from ((t (:foreground ,my-hicontrast))))
-   `(gnus-header-subject ((t (:foreground ,my-highlight))))
-   `(gnus-header-content ((t (:foreground ,my-visited))))
+   `(gnus-group-mail-3          ((t (:foreground ,my-highlight))))
+   `(gnus-group-mail-3-empty    ((t (:foreground ,my-contrast))))
+   `(gnus-header-name           ((t (:foreground ,my-active))))
+   `(gnus-header-from           ((t (:foreground ,my-hicontrast))))
+   `(gnus-header-subject        ((t (:foreground ,my-highlight))))
+   `(gnus-header-content        ((t (:foreground ,my-visited))))
    `(gnus-summary-normal-unread ((t (:foreground ,my-highlight))))
-   `(gnus-summary-normal-read ((t (:foreground ,my-highlight))))
-   `(gnus-summary-selected ((t (:foreground ,my-pop))))
+   `(gnus-summary-normal-read   ((t (:foreground ,my-highlight))))
+   `(gnus-summary-selected      ((t (:foreground ,my-pop))))
 
    ;; Helm
    ;; ========================================
-   `(helm-buffer ((t (:family ,font-mono))))
-   `(helm-buffers ((t (:family ,font-mono))))
-   `(helm-faces ((t (:family ,font-mono))))
-   `(helm-buffer-archive ((t (:foreground ,my-deepcontrast))))
-   `(helm-buffer-directory ((t (:foreground ,my-shadow :background ,my-hicontrast))))
-   `(helm-buffer-file ((t (:foreground ,my-pop))))
-   `(helm-buffer-modified ((t (:foreground ,my-visited))))
-   `(helm-buffer-not-saved ((t (:foreground ,my-warning))))
-   `(helm-buffer-process ((t (:foreground ,my-contrast))))
-   `(helm-buffer-size ((t (:foreground ,my-info))))
-   `(helm-candidate-number ((t (:foreground ,my-shadow :background ,my-info))))
+   `(helm-buffer-archive             ((t (:foreground ,my-deepcontrast))))
+   `(helm-buffer-directory           ((t (:foreground ,my-shadow :background ,my-hicontrast))))
+   `(helm-buffer-file                ((t (:foreground ,my-pop))))
+   `(helm-buffer-modified            ((t (:foreground ,my-visited))))
+   `(helm-buffer-not-saved           ((t (:foreground ,my-warning))))
+   `(helm-buffer-process             ((t (:foreground ,my-contrast))))
+   `(helm-buffer-size                ((t (:foreground ,my-info))))
+   `(helm-candidate-number           ((t (:foreground ,my-shadow :background ,my-info))))
    `(helm-candidate-number-suspended ((t (:foreground ,my-info :background ,my-deepcontrast))))
-   `(helm-grep-match ((t (:foreground ,my-highlight))))
-   `(helm-header ((t (:foreground ,my-white))))
-   `(helm-header-line-left-margin ((t (:background ,my-info :foreground ,my-shadow))))
-   `(helm-match ((t (:foreground ,my-visited :weight bold))))
-   `(helm-minibuffer-prompt ((t (:foreground ,my-pop))))
-   `(helm-no-file-buffer-modified ((t (:foreground ,my-info))))
-   `(helm-prefarg ((t (:foreground ,my-visited))))
-   `(helm-selection ((t (:foreground ,my-deepcontrast :background ,my-info))))
-   `(helm-separator ((t (:background ,my-deepcontrast))))
-   `(helm-source-header ((t (:family ,font-heading :height 1.9 :foreground ,my-contrast :underline t))))
-   `(helm-visible-mark ((t (:background ,my-visited))))
+   `(helm-grep-match                 ((t (:foreground ,my-highlight))))
+   `(helm-header                     ((t (:foreground ,my-white))))
+   `(helm-header-line-left-margin    ((t (:background ,my-info :foreground ,my-shadow))))
+   `(helm-match                      ((t (:foreground ,my-visited :weight bold))))
+   `(helm-minibuffer-prompt          ((t (:foreground ,my-pop))))
+   `(helm-no-file-buffer-modified    ((t (:foreground ,my-info))))
+   `(helm-prefarg                    ((t (:foreground ,my-visited))))
+   `(helm-selection                  ((t (:foreground ,my-deepcontrast :background ,my-info))))
+   `(helm-separator                  ((t (:background ,my-deepcontrast))))
+   `(helm-source-header              ((t (:family ,font-heading :height 1.9 :foreground ,my-contrast :underline t))))
+   `(helm-visible-mark               ((t (:background ,my-visited))))
 
    ;; Heredocs
    ;; ========================================
@@ -215,23 +217,23 @@
 
    ;; Isearch
    ;; ========================================
-   `(isearch ((t (:foreground ,my-shadow :background ,my-highlight))))
+   `(isearch      ((t (:foreground ,my-shadow :background ,my-highlight))))
    `(isearch-fail ((t (:background ,my-pop))))
 
    ;; Magit
    ;; ========================================
-   `(magit-section-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast))))
-   `(magit-diff-added ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
-   `(magit-diff-added-highlight ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
-   `(magit-diff-removed ((t (:foreground ,my-warning :background ,my-deepcontrast))))
-   `(magit-diff-removed-highlight ((t (:foreground ,my-warning :background ,my-deepcontrast))))
+   `(magit-section-highlight          ((t (:foreground ,my-pop :background ,my-deepcontrast))))
+   `(magit-diff-added                 ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
+   `(magit-diff-added-highlight       ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
+   `(magit-diff-removed               ((t (:foreground ,my-warning :background ,my-deepcontrast))))
+   `(magit-diff-removed-highlight     ((t (:foreground ,my-warning :background ,my-deepcontrast))))
    `(magit-diff-hunk-heading-highlight ((t (:foreground ,my-pop :background ,my-deepcontrast))))
 
-   ;; Man
+   ;; Man pages — use fixed-pitch face to inherit mono font
    ;; ========================================
-   `(man-mode-hook ((t (:family ,font-mono))))
-   `(man-follow ((t (:foreground ,my-active))))
-   `(man-overstrike ((t (:foreground ,my-pop))))
+   `(Man-overstrike ((t (:inherit fixed-pitch :foreground ,my-pop :weight bold))))
+   `(Man-underline  ((t (:inherit fixed-pitch :foreground ,my-active :underline t))))
+   `(man-follow     ((t (:foreground ,my-active))))
 
    ;; Minibuffer
    ;; ========================================
@@ -239,67 +241,68 @@
 
    ;; Org-Mode
    ;; ========================================
-   `(org-agenda-day-view ((t (:weight bold :foreground ,my-visited))))
-   `(org-agenda-date ((t (:foreground ,my-contrast))))
-   `(org-agenda-date-today ((t (:background ,my-highlight :foreground ,my-deepcontrast :weight bold))))
-   `(org-agenda-date-weekend ((t (:foreground ,my-deepcontrast))))
-   `(org-agenda-done ((t (:slant italic :foreground ,my-contrast :strike-through t))))
-   `(org-agenda-structure ((t (:slant italic :foreground ,my-pop))))
-   `(org-imminent-deadline ((t (:foreground ,my-warning))))
-   `(org-deadline-past-days ((t (:foreground ,my-warning))))
-   `(org-deadline-warning-days ((t (:foreground ,my-warning))))
-   `(org-upcoming-deadline ((t (:foreground ,my-visited :slant italic))))
-   `(org-priority ((t (:family ,font-mono :foreground ,my-visited :slant normal))))
-   `(org-block-begin-line ((t (:foreground ,my-shadow :background ,my-contrast))))
-   `(org-block ((t (:family ,font-mono :foreground ,my-pop :background ,my-deepcontrast :extend t))))
-   `(org-block-end-line ((t (:foreground ,my-shadow :background ,my-contrast))))
-   `(org-date ((t (:foreground ,my-visited))))
-   `(org-document-info ((t (:height 1.25 :foreground ,my-visited))))
-   `(org-document-info-keyword ((t (:foreground ,my-contrast))))
-   `(org-document-title ((t (:family ,font-cursive :foreground ,my-info :height 2 :weight extra-bold))))
-   `(org-done ((t (:foreground ,my-contrast :strike-through t))))
-   `(org-headline-done ((t (:foreground ,my-contrast :strike-through t))))
+   `(org-agenda-day-view        ((t (:weight bold :foreground ,my-visited))))
+   `(org-agenda-date            ((t (:foreground ,my-contrast))))
+   `(org-agenda-date-today      ((t (:background ,my-highlight :foreground ,my-deepcontrast :weight bold))))
+   `(org-agenda-date-weekend    ((t (:foreground ,my-deepcontrast))))
+   `(org-agenda-done            ((t (:slant italic :foreground ,my-contrast :strike-through t))))
+   `(org-agenda-structure       ((t (:slant italic :foreground ,my-pop))))
+   `(org-imminent-deadline      ((t (:foreground ,my-warning))))
+   `(org-deadline-warning-days  ((t (:foreground ,my-warning))))
+   `(org-upcoming-deadline      ((t (:foreground ,my-visited :slant italic))))
+   `(org-priority               ((t (:inherit fixed-pitch :foreground ,my-visited :slant normal))))
+   `(org-block-begin-line       ((t (:foreground ,my-shadow :background ,my-contrast))))
+   `(org-block                  ((t (:inherit fixed-pitch :foreground ,my-pop :background ,my-deepcontrast :extend t))))
+   `(org-block-end-line         ((t (:foreground ,my-shadow :background ,my-contrast))))
+   `(org-date                   ((t (:foreground ,my-visited))))
+   `(org-document-info          ((t (:height 1.25 :foreground ,my-visited))))
+   `(org-document-info-keyword  ((t (:foreground ,my-contrast))))
+   `(org-document-title         ((t (:family ,font-cursive :foreground ,my-info :height 2 :weight extra-bold))))
+   `(org-done                   ((t (:foreground ,my-contrast :strike-through t))))
+   `(org-headline-done          ((t (:foreground ,my-contrast :strike-through t))))
    `(org-level-1 ((t (:family ,font-sans :weight bold))))
-   `(org-level-2 ((t (:family ,font-sans :foreground ,my-contrast  :weight bold :slant italic))))
+   `(org-level-2 ((t (:family ,font-sans :foreground ,my-contrast :weight bold :slant italic))))
    `(org-level-3 ((t (:family ,font-sans :foreground ,my-active :weight regular))))
    `(org-level-4 ((t (:family ,font-sans :foreground ,my-contrast :weight regular))))
    `(org-level-5 ((t (:family ,font-sans :weight regular))))
    `(org-level-6 ((t (:family ,font-sans :weight regular))))
    `(org-level-7 ((t (:family ,font-sans :foreground ,my-contrast :weight regular))))
-   `(org-link ((t (:foreground ,my-active :underline t))))
-   `(org-scheduled ((t (:foreground ,my-info))))
+   `(org-link           ((t (:foreground ,my-active :underline t))))
+   `(org-scheduled      ((t (:foreground ,my-info))))
    `(org-scheduled-today ((t (:foreground ,my-highlight))))
-   `(org-src-block-faces ((t (:family ,font-mono))))
    `(org-special-keyword ((t (:family ,font-default :foreground ,my-contrast))))
-   `(org-table-hlines ((t (:family ,font-mono))))
-   `(org-table ((t (:family ,font-mono :foreground ,my-contrast))))
-   `(org-tag ((t (:foreground ,my-active))))
-   `(org-todo ((t (:foreground ,my-info))))
+   `(org-table          ((t (:inherit fixed-pitch :foreground ,my-contrast))))
+   `(org-tag            ((t (:foreground ,my-active))))
+   `(org-todo           ((t (:foreground ,my-info))))
+   `(org-verbatim       ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
+   `(org-code           ((t (:inherit fixed-pitch :foreground ,my-pop))))
 
    ;; Speedbar
    ;; ========================================
    `(speedbar-directory-face ((t (:family ,font-mono :foreground ,my-contrast))))
-   `(speedbar-file-face ((t (:family ,font-mono :foreground ,my-contrast))))
-   `(speedbar-selected-face ((t (:weight extra-bold :foreground ,my-highlight))))
+   `(speedbar-file-face      ((t (:family ,font-mono :foreground ,my-contrast))))
+   `(speedbar-selected-face  ((t (:weight extra-bold :foreground ,my-highlight))))
    `(speedbar-highlight-face ((t (:foreground ,my-active))))
-   `(speedbar-button-face ((t (:foreground ,my-pop))))
+   `(speedbar-button-face    ((t (:foreground ,my-pop))))
 
    ;; Terraform
    ;; ========================================
    `(terraform--resource-name-face ((t (:foreground ,my-fluff))))
    `(terraform--resource-type-face ((t (:foreground ,my-active))))
 
-   ;; Terminal
+   ;; Terminal — font family is inherited from default; color faces set color only
    ;; ========================================
-   `(term-color-black ((t (:family ,font-mono :foreground ,my-shadow))))
-   `(term-color-blue ((t (:family ,font-mono :foreground ,my-pop))))
-   `(term-color-green ((t (:family ,font-mono :foreground ,my-highlight))))
-   `(term-color-magenta ((t (:family ,font-mono :foreground ,my-active))))
-   `(term-color-red ((t (:family ,font-mono :foreground ,my-warning))))
-   `(term-color-white ((t (:family ,font-mono :foreground ,my-white))))
-   `(term-bold ((t (:foreground ,my-highlight))))
-   )  ;; Closes custom-theme-set-faces
-  )   ;; Closes let
+   `(term              ((t (:inherit fixed-pitch))))
+   `(term-bold         ((t (:inherit fixed-pitch :foreground ,my-highlight :weight bold))))
+   `(term-color-black   ((t (:foreground ,my-shadow))))
+   `(term-color-blue    ((t (:foreground ,my-pop))))
+   `(term-color-green   ((t (:foreground ,my-highlight))))
+   `(term-color-magenta ((t (:foreground ,my-active))))
+   `(term-color-red     ((t (:foreground ,my-warning))))
+   `(term-color-white   ((t (:foreground ,my-white))))
+
+   ) ;; end custom-theme-set-faces
+  )   ;; end let
 
 ;;;###autoload
 (when load-file-name
