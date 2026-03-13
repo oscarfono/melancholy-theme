@@ -19,7 +19,7 @@
 ;;
 ;; Ensure the following fonts are installed before use:
 ;;
-;;    - CommitMono (https://commitmono.com)
+;;    - CommitMono Nerd Font Mono (installed as Nerd Font variant)
 ;;    - Caveat (https://fonts.googleapis.com/css2?family=Caveat)
 ;;    - Raleway (nix packages)
 ;;
@@ -36,7 +36,7 @@
 (deftheme melancholy
   "A dark theme that's pretty sad really.")
 
-(let ((font-mono    "CommitMono")
+(let ((font-mono    "CommitMono Nerd Font Mono")
       (font-sans    "Raleway")
       (font-cursive "Caveat")
       (my-fluff        "#FCDEEA")
