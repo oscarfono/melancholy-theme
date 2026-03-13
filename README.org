@@ -1,119 +1,177 @@
 #+TITLE: Melancholy Theme
-#+SUBTITLE: A dark emacs theme thats actually pretty sad really
-#+AUTHOR: @baaash
+#+AUTHOR: Cooper Oscarfono
+#+DATE: 2026
 
-[[./melancholy.png]]
+A dark Emacs theme that's pretty sad really.
 
- A dark theme thats pretty sad really.
+Melancholy is a muted, desaturated dark theme with warm amber accents.  It
+prioritises readability over visual noise — colours are used to communicate
+meaning, not decoration.
 
 * Screenshots
-#+CAPTION: melancholy code preview 1
-#+NAME: fig.code-preview-1
-[[file:screens/melancholy-code-preview-1.png][melancholy-code-preview-1.png]]
 
-#+CAPTION: melancholy code preview 2
-#+NAME: fig.code-preview-2
-[[file:screens/melancholy-code-preview-2.png][melancholy-code-preview-2.png]]
+#+ATTR_ORG: :width 800
+[[./screens/melancholy-code-preview-1.png]]
 
-#+CAPTION: melancholy code preview 3
-#+NAME: fig.code-preview-3
-[[file:screens/melancholy-code-preview-3.png][melancholy-code-preview-3.png]]
+#+ATTR_ORG: :width 800
+[[./screens/melancholy-orgmode-preview.png]]
 
-#+CAPTION: melancholy helm over terminal buffer
-#+NAME: fig.helm-preview
-[[file:screens/melancholy-helm-over-terminal-buffer-preview.png][melancholy-helm-over-terminal-buffer-preview.png]]
+#+ATTR_ORG: :width 800
+[[./screens/melancholy-org-agenda-preview.png]]
 
-#+CAPTION: melancholy erc buffer
-#+NAME: fig.erc-preview
-[[file:screens/melancholy-erc-preview.png][melancholy-erc-preview.png]]
+* Colour Philosophy
 
-#+CAPTION: melancholy orgmode buffer
-#+NAME: fig.orgmode-preview
-[[file:screens/melancholy-orgmode-preview.png][melancholy-orgmode-preview.png]]
+| Role                          | Colour        | Used for                                    |
+|-------------------------------+---------------+---------------------------------------------|
+| Primary accent (cyan)         | =#00B7FF=     | Functions, builtins, directory names        |
+| Secondary accent (pink)       | =#F92672=     | Keywords, operators, active elements        |
+| Tertiary accent (green)       | =#96BF33=     | Types, variables, success states            |
+| Amber                         | =#FFB728=     | Numbers, constants, macros, warnings        |
+| Red                           | =#FF6969=     | Errors, Rust =unsafe=, critical danger      |
+| Pale pink                     | =#FCDEEA=     | Deep heading levels, rare accent use        |
+| Primary foreground            | =#DEDEDE=     | Default text                                |
+| String foreground             | =#E8E8E8=     | Strings (softened so they don't dominate)   |
+| Muted foreground              | =#707070=     | Comments, borders, de-emphasised text       |
+| Background                    | =#2A2A2A=     | Base background                             |
+| Subtle background             | =#4A4A4A=     | Regions, source blocks                      |
 
-#+CAPTION: melancholy org-agenda buffer
-#+NAME: fig.org-agenda-preview
-[[file:screens/melancholy-org-agenda-preview.png][melancholy-org-agenda-preview.png]]
+* Requirements
 
-* Before Installing
+- Emacs 27.1 or later
 
-You should use an Emacs verison > Emacs 27.1
+* Fonts
 
-Please note, that in order for the theme to display as intended, you should install the following fonts:
+Melancholy uses a fallback font chain — it loads cleanly on any system and
+looks best when the preferred fonts are installed.
 
-    - Impact_Label (https://www.fontsquirrel.com/fonts/download/impact-label)
-    - texlive-sourcecodepro
-    - fonts-purisa || thai-scalable-purisa-fonts
-    - fonts-dancingscript
+Run =M-x melancholy-check-fonts= after loading the theme to see what is
+installed and where to get anything that is missing.
 
-Sorry some of them you'll have to find and install manually.
+| Role    | Preferred                   | Fallbacks                   |
+|---------+-----------------------------+-----------------------------|
+| Mono    | CommitMono Nerd Font Mono   | JetBrains Mono, Hack        |
+| Sans    | Raleway                     | Inter, sans-serif           |
+| Cursive | Caveat                      | Segoe Print, serif          |
 
-For Fedora etc, these exist in repo:
+** Installing fonts
 
-#+begin_example shell
+*CommitMono Nerd Font Mono*
+#+begin_src shell
+# Download from https://www.nerdfonts.com/font-downloads
+# Search for "CommitMono"
+#+end_src
 
-sudo dnf install -y impallari-dancing-script-fonts texlive-sourcecodepro thai-scalable-purisa-fonts
+*Raleway and Caveat* are available from Google Fonts:
+#+begin_src shell
+# Arch / Manjaro
+paru -S ttf-raleway ttf-caveat
 
-#+end_example
+# Nix
+nix-env -iA nixpkgs.google-fonts   # includes both
 
-For Ubuntu, these exist in repo:
-#+begin_example shell
-
-sudo apt install -y texlive-fonts-extra fonts-tlwg-purisa
-
-#+end_example
+# Ubuntu / Debian — install manually from fonts.google.com
+#+end_src
 
 * Installation
-You may either install manually, or through Melpa.
+
+** MELPA
+
+#+begin_src emacs-lisp
+(use-package melancholy-theme
+  :ensure t
+  :config
+  (load-theme 'melancholy t))
+#+end_src
 
 ** Manual
 
-Download melancholy-theme.el to the directory ~/.emacs.d/themes/.  Add this to your .emacs:
+Clone or download =melancholy-theme.el= to =~/.emacs.d/themes/=, then:
 
-#+begin_example elisp
+#+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'melancholy t)
+#+end_src
 
-#+end_example
+* Customisation
 
+The three accent colours can be overridden before loading the theme:
 
-Now you can load the theme with the interactive function load-theme like this:
+#+begin_src emacs-lisp
+(setq melancholy-accent-primary   "#00B7FF"   ; cyan  — functions, builtins
+      melancholy-accent-secondary "#F92672"   ; pink  — keywords, operators
+      melancholy-accent-tertiary  "#96BF33")  ; green — types, variables
+(load-theme 'melancholy t)
+#+end_src
 
-#+begin_example elisp
+* Package Coverage
 
- M-x load-theme RET melancholy
+Melancholy provides faces for the following packages.  If you use something
+not on this list, open an issue.
 
-#+end_example
+| Category      | Packages                                                  |
+|---------------+-----------------------------------------------------------|
+| Completion    | vertico, corfu, marginalia, orderless, consult, helm      |
+| Editing       | smartparens, rainbow-delimiters, symbol-overlay           |
+| Navigation    | treemacs, speedbar, dired                                 |
+| VCS           | magit, diff-hl                                            |
+| LSP           | lsp-mode, lsp-ui, eglot                                   |
+| Search        | consult, deadgrep, rg.el, wgrep                           |
+| Syntax check  | flycheck, flymake                                         |
+| Org           | org-mode, org-agenda                                      |
+| Email/RSS     | notmuch, gnus, elfeed, erc                                |
+| UI            | which-key, nerd-icons, all-the-icons, indent-guide        |
+| Themes/frames | tab-bar, tab-line, perspective                            |
+| Terminal      | term (full 16-colour ANSI set), vterm                     |
+| Languages     | JS/TS, Python, Go, Rust, Zig, C/C++, Bash, Terraform      |
+| Tree-sitter   | Generic treesit faces + language-specific ts-mode faces   |
 
-** Melpa
+* Changelog
 
-Melancholy is available in  MELPA.
+** v5.0 (2026-03-13)
+- Font fallback chains — theme loads cleanly without preferred fonts installed
+- =melancholy-check-fonts= interactive command to report font status
+- =defcustom= accent colour overrides for primary, secondary, tertiary accents
+- Added nerd-icons faces (successor to all-the-icons)
+- Added indent-guide, highlight-indent-guides
+- Added symbol-overlay
+- Added wgrep, deadgrep, rg.el, full grep face set
+- Full 16-colour ANSI term face set including bright variants
+- Added notmuch and elfeed faces
+- Added treemacs and perspective faces
+- Full magit face coverage: branches, log graph, bisect, process status
+- Full org-mode coverage: checkboxes, citations, drawers, ellipsis
+- Full corfu, vertico, marginalia, consult, orderless face sets
+- Eglot inlay hint faces (type, parameter, general)
+- Fixed =shadow= face (was setting =:background=, corrected to =:foreground=)
+- Progressive heading heights in org-mode for visual hierarchy
+- org-level foregrounds now all explicit (no silent inheritance gaps)
 
-Install melancholy with the following command:
+** v4.1
+- Tree-sitter and language-specific faces: JS/TS, Bash, Python, Go, Zig, Rust, C/C++
+- lsp-mode and eglot faces
 
-#+begin_example elisp
+** v4.0
+- Contrast fixes (WCAG AA compliance for key faces)
+- mode-line and mode-line-inactive (were completely missing)
+- tab-bar, window-divider, fill-column-indicator
+- Completion framework faces: vertico, corfu, marginalia, orderless, consult
+- which-key, rainbow-delimiters, diff-hl
+- TTY support via =:type= display class splits
 
-M-x package-install melancholy
+* Contributing
 
-#+end_example
+Issues and pull requests welcome at [[https://github.com/oscarfono/melancholy-theme][github.com/oscarfono/melancholy-theme]].
 
-or with use-package:
+If you are adding faces for a new package, please follow the existing colour
+logic:
 
-#+begin_example elisp
+- Cyan (primary) :: functions, builtins, things you *call*
+- Pink (secondary) :: keywords, operators, language-level signals
+- Green (tertiary) :: types, variables, structural shapes
+- Amber :: numbers, constants, macros, warm literals
+- Red :: errors, danger, things that need attention
+- Grey tones :: comments, punctuation, anything that should recede
 
-(use-package melancholy
-  :ensure t)
+* Licence
 
-#+end_example
-
-
-To load it automatically on Emacs startup add this to your init file:
-
-
-#+begin_example elisp
-
- (load-theme 'melancholy t)
-
-#+end_example
-
-
-[[https://thenounproject.com/icon/melancholy-1994623/][melancholy vector design by evgeni moryakov]]
+Copyleft — do as you please.
