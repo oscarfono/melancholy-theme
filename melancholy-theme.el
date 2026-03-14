@@ -5,10 +5,10 @@
 ;; Author: Cooper Oscarfono
 ;; Maintainer: Cooper Oscarfono
 ;; Created: 30 August 2022
-;; Last Modified: 13 March 2026
+;; Last Modified: 14 March 2026
 
 ;; Version: 5.0
-;; Package-Requires: ((emacs "27.1"))
+;; Package-Requires: ((emacs "29.1"))
 
 ;; Keywords: faces, frames, theme, dark
 ;; URL: https://github.com/oscarfono/melancholy-theme
@@ -183,10 +183,10 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(default ((((type graphic))
                (:family ,font-mono
-                        :width normal :weight regular :slant normal
-                        :foreground ,my-hicontrast :background ,my-shadow
-                        :underline nil :overline nil :strike-through nil
-                        :box nil :inverse-video nil :stipple nil))
+                :width normal :weight regular :slant normal
+                :foreground ,my-hicontrast :background ,my-shadow
+                :underline nil :overline nil :strike-through nil
+                :box nil :inverse-video nil :stipple nil))
               (((type tty))
                (:foreground "white" :background "black"))))
 
@@ -214,14 +214,14 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(mode-line ((((type graphic))
                  (:foreground ,my-hicontrast :background ,my-deepcontrast
-                              :box (:line-width 1 :color ,my-contrast)))
+                  :box (:line-width 1 :color ,my-contrast)))
                 (((type tty))
                  (:foreground "white" :background "brightblack"))))
    `(mode-line-inactive ((((type graphic))
-                          (:foreground ,my-contrast :background ,my-shadow
-                                       :box (:line-width 1 :color ,my-deepcontrast)))
-                         (((type tty))
-                          (:foreground "brightblack" :background "black"))))
+                           (:foreground ,my-contrast :background ,my-shadow
+                            :box (:line-width 1 :color ,my-deepcontrast)))
+                          (((type tty))
+                           (:foreground "brightblack" :background "black"))))
    `(mode-line-buffer-id  ((t (:foreground ,my-pop :weight bold))))
    `(mode-line-emphasis   ((t (:foreground ,my-highlight :weight bold))))
    `(mode-line-highlight  ((t (:foreground ,my-info))))
@@ -231,9 +231,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(tab-bar               ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-bar-tab           ((t (:background ,my-deepcontrast :foreground ,my-hicontrast
-                                            :box (:line-width 1 :color ,my-contrast)))))
+                                :box (:line-width 1 :color ,my-contrast)))))
    `(tab-bar-tab-inactive  ((t (:background ,my-shadow :foreground ,my-contrast
-                                            :box (:line-width 1 :color ,my-deepcontrast)))))
+                                :box (:line-width 1 :color ,my-deepcontrast)))))
    `(tab-line              ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-line-tab          ((t (:background ,my-deepcontrast :foreground ,my-hicontrast))))
    `(tab-line-tab-current  ((t (:background ,my-deepcontrast :foreground ,my-pop :weight bold))))
@@ -427,7 +427,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Symbol overlay
    ;; ============================================================
    `(symbol-overlay-default-face ((t (:background ,my-deepcontrast
-                                                  :underline (:color ,my-pop :style line)))))
+                                      :underline (:color ,my-pop :style line)))))
    `(symbol-overlay-face-1  ((t (:background ,my-deepcontrast :foreground ,my-pop))))
    `(symbol-overlay-face-2  ((t (:background ,my-deepcontrast :foreground ,my-highlight))))
    `(symbol-overlay-face-3  ((t (:background ,my-deepcontrast :foreground ,my-info))))
@@ -448,18 +448,18 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; Icons — nerd-icons (preferred) and all-the-icons (compat)
    ;; ============================================================
-   `(nerd-icons-dcyan     ((t (:foreground ,my-pop))))
-   `(nerd-icons-lcyan     ((t (:foreground ,my-pop))))
-   `(nerd-icons-dgreen    ((t (:foreground ,my-highlight))))
-   `(nerd-icons-lgreen    ((t (:foreground ,my-highlight))))
-   `(nerd-icons-dpink     ((t (:foreground ,my-active))))
-   `(nerd-icons-lpink     ((t (:foreground ,my-fluff))))
-   `(nerd-icons-dyellow   ((t (:foreground ,my-info))))
-   `(nerd-icons-lyellow   ((t (:foreground ,my-info))))
-   `(nerd-icons-dred      ((t (:foreground ,my-warning))))
-   `(nerd-icons-lred      ((t (:foreground ,my-warning))))
-   `(nerd-icons-dsilver   ((t (:foreground ,my-contrast))))
-   `(nerd-icons-lsilver   ((t (:foreground ,my-visited))))
+   `(nerd-icons-dcyan    ((t (:foreground ,my-pop))))
+   `(nerd-icons-lcyan    ((t (:foreground ,my-pop))))
+   `(nerd-icons-dgreen   ((t (:foreground ,my-highlight))))
+   `(nerd-icons-lgreen   ((t (:foreground ,my-highlight))))
+   `(nerd-icons-dpink    ((t (:foreground ,my-active))))
+   `(nerd-icons-lpink    ((t (:foreground ,my-fluff))))
+   `(nerd-icons-dyellow  ((t (:foreground ,my-info))))
+   `(nerd-icons-lyellow  ((t (:foreground ,my-info))))
+   `(nerd-icons-dred     ((t (:foreground ,my-warning))))
+   `(nerd-icons-lred     ((t (:foreground ,my-warning))))
+   `(nerd-icons-dsilver  ((t (:foreground ,my-contrast))))
+   `(nerd-icons-lsilver  ((t (:foreground ,my-visited))))
    `(all-the-icons-dcyan  ((t (:foreground ,my-pop))))
    `(all-the-icons-dgreen ((t (:foreground ,my-highlight))))
    `(all-the-icons-dpink  ((t (:foreground ,my-active))))
@@ -491,17 +491,17 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; Diff / diff-hl
    ;; ============================================================
-   `(diff-added            ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
-   `(diff-removed          ((t (:foreground ,my-warning :background ,my-deepcontrast))))
-   `(diff-changed          ((t (:foreground ,my-info :background ,my-deepcontrast))))
-   `(diff-header           ((t (:foreground ,my-pop :weight bold))))
-   `(diff-file-header      ((t (:foreground ,my-hicontrast :weight bold))))
-   `(diff-hunk-header      ((t (:foreground ,my-visited))))
-   `(diff-refine-added     ((t (:foreground ,my-highlight :weight bold))))
-   `(diff-refine-removed   ((t (:foreground ,my-warning :weight bold))))
-   `(diff-hl-insert        ((t (:foreground ,my-highlight :background ,my-highlight))))
-   `(diff-hl-delete        ((t (:foreground ,my-warning :background ,my-warning))))
-   `(diff-hl-change        ((t (:foreground ,my-info :background ,my-info))))
+   `(diff-added          ((t (:foreground ,my-highlight :background ,my-deepcontrast))))
+   `(diff-removed        ((t (:foreground ,my-warning :background ,my-deepcontrast))))
+   `(diff-changed        ((t (:foreground ,my-info :background ,my-deepcontrast))))
+   `(diff-header         ((t (:foreground ,my-pop :weight bold))))
+   `(diff-file-header    ((t (:foreground ,my-hicontrast :weight bold))))
+   `(diff-hunk-header    ((t (:foreground ,my-visited))))
+   `(diff-refine-added   ((t (:foreground ,my-highlight :weight bold))))
+   `(diff-refine-removed ((t (:foreground ,my-warning :weight bold))))
+   `(diff-hl-insert      ((t (:foreground ,my-highlight :background ,my-highlight))))
+   `(diff-hl-delete      ((t (:foreground ,my-warning :background ,my-warning))))
+   `(diff-hl-change      ((t (:foreground ,my-info :background ,my-info))))
    `(diff-hl-margin-insert ((t (:foreground ,my-highlight))))
    `(diff-hl-margin-delete ((t (:foreground ,my-warning))))
    `(diff-hl-margin-change ((t (:foreground ,my-info))))
@@ -572,22 +572,22 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; Treemacs
    ;; ============================================================
-   `(treemacs-root-face                ((t (:foreground ,my-pop :weight bold :height 1.1))))
-   `(treemacs-directory-face           ((t (:foreground ,my-pop))))
+   `(treemacs-root-face               ((t (:foreground ,my-pop :weight bold :height 1.1))))
+   `(treemacs-directory-face          ((t (:foreground ,my-pop))))
    `(treemacs-directory-collapsed-face ((t (:foreground ,my-pop))))
-   `(treemacs-file-face                ((t (:foreground ,my-hicontrast))))
-   `(treemacs-tags-face                ((t (:foreground ,my-hicontrast))))
-   `(treemacs-help-title-face          ((t (:foreground ,my-info :weight bold))))
-   `(treemacs-help-column-face         ((t (:foreground ,my-pop))))
-   `(treemacs-fringe-indicator-face    ((t (:foreground ,my-active))))
-   `(treemacs-git-modified-face        ((t (:foreground ,my-info))))
-   `(treemacs-git-renamed-face         ((t (:foreground ,my-pop))))
-   `(treemacs-git-ignored-face         ((t (:foreground ,my-contrast))))
-   `(treemacs-git-untracked-face       ((t (:foreground ,my-visited))))
-   `(treemacs-git-added-face           ((t (:foreground ,my-highlight))))
-   `(treemacs-git-conflict-face        ((t (:foreground ,my-warning :weight bold))))
-   `(treemacs-on-success-pulse-face    ((t (:background ,my-highlight))))
-   `(treemacs-on-failure-pulse-face    ((t (:background ,my-warning))))
+   `(treemacs-file-face               ((t (:foreground ,my-hicontrast))))
+   `(treemacs-tags-face               ((t (:foreground ,my-hicontrast))))
+   `(treemacs-help-title-face         ((t (:foreground ,my-info :weight bold))))
+   `(treemacs-help-column-face        ((t (:foreground ,my-pop))))
+   `(treemacs-fringe-indicator-face   ((t (:foreground ,my-active))))
+   `(treemacs-git-modified-face       ((t (:foreground ,my-info))))
+   `(treemacs-git-renamed-face        ((t (:foreground ,my-pop))))
+   `(treemacs-git-ignored-face        ((t (:foreground ,my-contrast))))
+   `(treemacs-git-untracked-face      ((t (:foreground ,my-visited))))
+   `(treemacs-git-added-face          ((t (:foreground ,my-highlight))))
+   `(treemacs-git-conflict-face       ((t (:foreground ,my-warning :weight bold))))
+   `(treemacs-on-success-pulse-face   ((t (:background ,my-highlight))))
+   `(treemacs-on-failure-pulse-face   ((t (:background ,my-warning))))
 
    ;; ============================================================
    ;; Perspective
@@ -661,7 +661,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(helm-selection                  ((t (:background ,my-deepcontrast :extend t))))
    `(helm-separator                  ((t (:foreground ,my-deepcontrast))))
    `(helm-source-header              ((t (:family ,font-sans :height 1.3 :foreground ,my-contrast
-                                                  :underline (:color ,my-deepcontrast :style line)))))
+                                          :underline (:color ,my-deepcontrast :style line)))))
    `(helm-visible-mark               ((t (:foreground ,my-highlight :weight bold))))
 
    ;; ============================================================
@@ -688,7 +688,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Org Mode
    ;; ============================================================
    `(org-document-title         ((t (:family ,font-cursive :foreground ,my-info
-                                             :height 2.0 :weight extra-bold))))
+                                     :height 2.0 :weight extra-bold))))
    `(org-document-info          ((t (:foreground ,my-visited :height 1.1))))
    `(org-document-info-keyword  ((t (:foreground ,my-contrast))))
 
@@ -703,67 +703,67 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(org-level-8 ((t (:family ,font-sans :foreground ,my-fluff     :weight regular))))
 
    ;; No foreground on org-block — lets font-lock colours work inside src blocks
-   `(org-block-begin-line         ((t (:inherit fixed-pitch :foreground ,my-contrast
-                                                :background ,my-deepcontrast :extend t))))
-   `(org-block                    ((t (:inherit fixed-pitch :background ,my-deepcontrast :extend t))))
-   `(org-block-end-line           ((t (:inherit fixed-pitch :foreground ,my-contrast
-                                                :background ,my-deepcontrast :extend t))))
+   `(org-block-begin-line ((t (:inherit fixed-pitch :foreground ,my-contrast
+                               :background ,my-deepcontrast :extend t))))
+   `(org-block            ((t (:inherit fixed-pitch :background ,my-deepcontrast :extend t))))
+   `(org-block-end-line   ((t (:inherit fixed-pitch :foreground ,my-contrast
+                               :background ,my-deepcontrast :extend t))))
 
-   `(org-agenda-structure         ((t (:family ,font-sans :foreground ,my-pop :slant italic :weight bold))))
-   `(org-agenda-date              ((t (:foreground ,my-contrast))))
-   `(org-agenda-date-today        ((t (:foreground ,my-shadow :background ,my-highlight :weight bold))))
-   `(org-agenda-date-weekend      ((t (:foreground ,my-deepcontrast))))
-   `(org-agenda-done              ((t (:foreground ,my-contrast :slant italic :strike-through t))))
-   `(org-agenda-day-view          ((t (:foreground ,my-visited :weight bold))))
-   `(org-date                     ((t (:inherit fixed-pitch :foreground ,my-visited :underline t))))
-   `(org-deadline-warning-days    ((t (:foreground ,my-warning))))
-   `(org-done                     ((t (:foreground ,my-contrast :strike-through t))))
-   `(org-headline-done            ((t (:foreground ,my-contrast :strike-through t))))
-   `(org-imminent-deadline        ((t (:foreground ,my-warning :weight bold))))
-   `(org-upcoming-deadline        ((t (:foreground ,my-visited :slant italic))))
-   `(org-scheduled                ((t (:foreground ,my-info))))
-   `(org-scheduled-today          ((t (:foreground ,my-highlight :weight bold))))
-   `(org-warning                  ((t (:foreground ,my-warning :weight bold))))
-   `(org-link                     ((t (:foreground ,my-active :underline t))))
-   `(org-code                     ((t (:inherit fixed-pitch :foreground ,my-pop))))
-   `(org-verbatim                 ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
-   `(org-table                    ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
-   `(org-formula                  ((t (:inherit fixed-pitch :foreground ,my-info))))
-   `(org-tag                      ((t (:foreground ,my-active :weight bold))))
-   `(org-todo                     ((t (:foreground ,my-info :weight bold))))
-   `(org-priority                 ((t (:inherit fixed-pitch :foreground ,my-visited))))
-   `(org-special-keyword          ((t (:inherit fixed-pitch :foreground ,my-contrast))))
-   `(org-drawer                   ((t (:foreground ,my-contrast))))
-   `(org-property-value           ((t (:foreground ,my-visited))))
-   `(org-checkbox                 ((t (:inherit fixed-pitch :foreground ,my-info :weight bold))))
+   `(org-agenda-structure      ((t (:family ,font-sans :foreground ,my-pop :slant italic :weight bold))))
+   `(org-agenda-date           ((t (:foreground ,my-contrast))))
+   `(org-agenda-date-today     ((t (:foreground ,my-shadow :background ,my-highlight :weight bold))))
+   `(org-agenda-date-weekend   ((t (:foreground ,my-deepcontrast))))
+   `(org-agenda-done           ((t (:foreground ,my-contrast :slant italic :strike-through t))))
+   `(org-agenda-day-view       ((t (:foreground ,my-visited :weight bold))))
+   `(org-date                  ((t (:inherit fixed-pitch :foreground ,my-visited :underline t))))
+   `(org-deadline-warning-days ((t (:foreground ,my-warning))))
+   `(org-done                  ((t (:foreground ,my-contrast :strike-through t))))
+   `(org-headline-done         ((t (:foreground ,my-contrast :strike-through t))))
+   `(org-imminent-deadline     ((t (:foreground ,my-warning :weight bold))))
+   `(org-upcoming-deadline     ((t (:foreground ,my-visited :slant italic))))
+   `(org-scheduled             ((t (:foreground ,my-info))))
+   `(org-scheduled-today       ((t (:foreground ,my-highlight :weight bold))))
+   `(org-warning               ((t (:foreground ,my-warning :weight bold))))
+   `(org-link                  ((t (:foreground ,my-active :underline t))))
+   `(org-code                  ((t (:inherit fixed-pitch :foreground ,my-pop))))
+   `(org-verbatim              ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
+   `(org-table                 ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
+   `(org-formula               ((t (:inherit fixed-pitch :foreground ,my-info))))
+   `(org-tag                   ((t (:foreground ,my-active :weight bold))))
+   `(org-todo                  ((t (:foreground ,my-info :weight bold))))
+   `(org-priority              ((t (:inherit fixed-pitch :foreground ,my-visited))))
+   `(org-special-keyword       ((t (:inherit fixed-pitch :foreground ,my-contrast))))
+   `(org-drawer                ((t (:foreground ,my-contrast))))
+   `(org-property-value        ((t (:foreground ,my-visited))))
+   `(org-checkbox              ((t (:inherit fixed-pitch :foreground ,my-info :weight bold))))
    `(org-checkbox-statistics-todo ((t (:foreground ,my-info))))
    `(org-checkbox-statistics-done ((t (:foreground ,my-highlight))))
-   `(org-footnote                 ((t (:foreground ,my-visited :underline t))))
-   `(org-cite                     ((t (:foreground ,my-pop))))
-   `(org-cite-key                 ((t (:foreground ,my-pop :underline t))))
-   `(org-ellipsis                 ((t (:foreground ,my-contrast :underline nil))))
+   `(org-footnote              ((t (:foreground ,my-visited :underline t))))
+   `(org-cite                  ((t (:foreground ,my-pop))))
+   `(org-cite-key              ((t (:foreground ,my-pop :underline t))))
+   `(org-ellipsis              ((t (:foreground ,my-contrast :underline nil))))
 
    ;; ============================================================
    ;; LSP / Eglot
    ;; ============================================================
-   `(lsp-face-highlight-textual               ((t (:background ,my-deepcontrast))))
-   `(lsp-face-highlight-read                  ((t (:background ,my-deepcontrast
-                                                               :underline (:color ,my-pop :style line)))))
-   `(lsp-face-highlight-write                 ((t (:background ,my-deepcontrast
-                                                               :underline (:color ,my-active :style line)))))
-   `(lsp-headerline-breadcrumb-path-face      ((t (:foreground ,my-visited))))
+   `(lsp-face-highlight-textual             ((t (:background ,my-deepcontrast))))
+   `(lsp-face-highlight-read                ((t (:background ,my-deepcontrast
+                                                 :underline (:color ,my-pop :style line)))))
+   `(lsp-face-highlight-write               ((t (:background ,my-deepcontrast
+                                                 :underline (:color ,my-active :style line)))))
+   `(lsp-headerline-breadcrumb-path-face    ((t (:foreground ,my-visited))))
    `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,my-contrast))))
-   `(lsp-headerline-breadcrumb-symbols-face   ((t (:foreground ,my-hicontrast :weight bold))))
-   `(lsp-ui-doc-background                    ((t (:background ,my-deepcontrast))))
-   `(lsp-ui-sideline-code-action              ((t (:foreground ,my-info))))
-   `(lsp-ui-sideline-current-symbol           ((t (:foreground ,my-pop :weight bold))))
+   `(lsp-headerline-breadcrumb-symbols-face ((t (:foreground ,my-hicontrast :weight bold))))
+   `(lsp-ui-doc-background                  ((t (:background ,my-deepcontrast))))
+   `(lsp-ui-sideline-code-action            ((t (:foreground ,my-info))))
+   `(lsp-ui-sideline-current-symbol         ((t (:foreground ,my-pop :weight bold))))
 
-   `(eglot-highlight-symbol-face              ((t (:background ,my-deepcontrast))))
-   `(eglot-diagnostic-tag-unnecessary-face    ((t (:foreground ,my-contrast :slant italic))))
-   `(eglot-diagnostic-tag-deprecated-face     ((t (:foreground ,my-visited :strike-through t))))
-   `(eglot-inlay-hint-face                    ((t (:foreground ,my-contrast :slant italic :height 0.85))))
-   `(eglot-type-hint-face                     ((t (:foreground ,my-highlight :slant italic :height 0.85))))
-   `(eglot-parameter-hint-face                ((t (:foreground ,my-visited :slant italic :height 0.85))))
+   `(eglot-highlight-symbol-face           ((t (:background ,my-deepcontrast))))
+   `(eglot-diagnostic-tag-unnecessary-face ((t (:foreground ,my-contrast :slant italic))))
+   `(eglot-diagnostic-tag-deprecated-face  ((t (:foreground ,my-visited :strike-through t))))
+   `(eglot-inlay-hint-face                 ((t (:foreground ,my-contrast :slant italic :height 0.85))))
+   `(eglot-type-hint-face                  ((t (:foreground ,my-highlight :slant italic :height 0.85))))
+   `(eglot-parameter-hint-face             ((t (:foreground ,my-visited :slant italic :height 0.85))))
 
    ;; ============================================================
    ;; Tree-sitter — generic level faces (Emacs 29+)
@@ -776,16 +776,16 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; JavaScript / TypeScript
    ;; ============================================================
-   `(js2-function-call                ((t (:foreground ,my-pop))))
-   `(js2-function-param               ((t (:foreground ,my-highlight :slant italic))))
-   `(js2-object-property              ((t (:foreground ,my-hicontrast))))
-   `(js2-object-property-access       ((t (:foreground ,my-hicontrast))))
-   `(js2-jsdoc-tag                    ((t (:foreground ,my-contrast))))
-   `(js2-jsdoc-type                   ((t (:foreground ,my-highlight))))
-   `(js2-jsdoc-value                  ((t (:foreground ,my-visited))))
-   `(js2-error                        ((t (:underline (:color ,my-warning :style wave)))))
-   `(js2-warning                      ((t (:underline (:color ,my-info :style wave)))))
-   `(js2-external-variable            ((t (:foreground ,my-info))))
+   `(js2-function-call            ((t (:foreground ,my-pop))))
+   `(js2-function-param           ((t (:foreground ,my-highlight :slant italic))))
+   `(js2-object-property          ((t (:foreground ,my-hicontrast))))
+   `(js2-object-property-access   ((t (:foreground ,my-hicontrast))))
+   `(js2-jsdoc-tag                ((t (:foreground ,my-contrast))))
+   `(js2-jsdoc-type               ((t (:foreground ,my-highlight))))
+   `(js2-jsdoc-value              ((t (:foreground ,my-visited))))
+   `(js2-error                    ((t (:underline (:color ,my-warning :style wave)))))
+   `(js2-warning                  ((t (:underline (:color ,my-info :style wave)))))
+   `(js2-external-variable        ((t (:foreground ,my-info))))
    `(typescript-this-face             ((t (:foreground ,my-active :weight bold))))
    `(typescript-access-modifier-face  ((t (:foreground ,my-active :slant italic))))
 
@@ -840,11 +840,11 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; Speedbar
    ;; ============================================================
-   `(speedbar-directory-face   ((t (:inherit fixed-pitch :foreground ,my-contrast))))
-   `(speedbar-file-face        ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
-   `(speedbar-selected-face    ((t (:foreground ,my-highlight :weight extra-bold))))
-   `(speedbar-highlight-face   ((t (:foreground ,my-active))))
-   `(speedbar-button-face      ((t (:foreground ,my-pop))))
+   `(speedbar-directory-face ((t (:inherit fixed-pitch :foreground ,my-contrast))))
+   `(speedbar-file-face      ((t (:inherit fixed-pitch :foreground ,my-hicontrast))))
+   `(speedbar-selected-face  ((t (:foreground ,my-highlight :weight extra-bold))))
+   `(speedbar-highlight-face ((t (:foreground ,my-active))))
+   `(speedbar-button-face    ((t (:foreground ,my-pop))))
 
    ;; ============================================================
    ;; Terminal — full 16-colour ANSI set for term/multi-term/vterm
@@ -854,22 +854,22 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; blue (#6B9FD4) is intentionally distinct from cyan (my-pop) so that
    ;; ls directory colours (blue) and symlinks (cyan) are distinguishable.
    ;; ============================================================
-   `(term                      ((t (:inherit fixed-pitch :foreground ,my-hicontrast :background ,my-shadow))))
-   `(term-bold                 ((t (:weight bold))))
-   `(term-underline            ((t (:underline t))))
-   `(term-color-black          ((t (:foreground ,my-shadow      :background ,my-shadow))))
-   `(term-color-red            ((t (:foreground ,my-warning     :background ,my-warning))))
-   `(term-color-green          ((t (:foreground ,my-highlight   :background ,my-highlight))))
-   `(term-color-yellow         ((t (:foreground ,my-info        :background ,my-info))))
-   `(term-color-blue           ((t (:foreground "#6B9FD4"       :background "#6B9FD4"))))
-   `(term-color-magenta        ((t (:foreground ,my-active      :background ,my-active))))
-   `(term-color-cyan           ((t (:foreground ,my-pop         :background ,my-pop))))
-   `(term-color-white          ((t (:foreground ,my-white       :background ,my-white))))
+   `(term                ((t (:inherit fixed-pitch :foreground ,my-hicontrast :background ,my-shadow))))
+   `(term-bold           ((t (:weight bold))))
+   `(term-underline      ((t (:underline t))))
+   `(term-color-black        ((t (:foreground ,my-shadow      :background ,my-shadow))))
+   `(term-color-red          ((t (:foreground ,my-warning     :background ,my-warning))))
+   `(term-color-green        ((t (:foreground ,my-highlight   :background ,my-highlight))))
+   `(term-color-yellow       ((t (:foreground ,my-info        :background ,my-info))))
+   `(term-color-blue         ((t (:foreground "#5BC8F5"       :background "#5BC8F5"))))
+   `(term-color-magenta      ((t (:foreground ,my-active      :background ,my-active))))
+   `(term-color-cyan         ((t (:foreground ,my-pop         :background ,my-pop))))
+   `(term-color-white        ((t (:foreground ,my-white       :background ,my-white))))
    `(term-color-bright-black   ((t (:foreground ,my-contrast    :background ,my-contrast))))
    `(term-color-bright-red     ((t (:foreground ,my-warning     :background ,my-warning))))
    `(term-color-bright-green   ((t (:foreground ,my-highlight   :background ,my-highlight))))
    `(term-color-bright-yellow  ((t (:foreground ,my-info        :background ,my-info))))
-   `(term-color-bright-blue    ((t (:foreground "#89B4E8"       :background "#89B4E8"))))
+   `(term-color-bright-blue    ((t (:foreground "#8FE0FF"       :background "#8FE0FF"))))
    `(term-color-bright-magenta ((t (:foreground ,my-fluff       :background ,my-fluff))))
    `(term-color-bright-cyan    ((t (:foreground ,my-pop         :background ,my-pop))))
    `(term-color-bright-white   ((t (:foreground ,my-hicontrast  :background ,my-hicontrast))))
@@ -877,8 +877,8 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; comint — shell prompt and input line (term-mode inherits these)
    ;; prompt: cyan bold so it stands out clearly against output
    ;; input:  full-brightness white so typed text is never ambiguous
-   `(comint-highlight-prompt   ((t (:foreground ,my-pop :weight bold))))
-   `(comint-highlight-input    ((t (:foreground ,my-hicontrast :weight normal))))
+   `(comint-highlight-prompt ((t (:foreground ,my-pop :weight bold))))
+   `(comint-highlight-input  ((t (:foreground ,my-hicontrast :weight normal))))
 
    ) ;; end custom-theme-set-faces
   )   ;; end let
