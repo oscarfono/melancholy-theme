@@ -2,10 +2,18 @@
 #+AUTHOR: Cooper Oscarfono
 #+DATE: 2026
 
-A dark Emacs theme that's pretty sad really.
+#+OPTIONS: toc:nil author:nil date:nil
+
+#+HTML: <div align="center">
+#+HTML: <img src="./melancholy.png" width="220" alt="Melancholy Theme"/>
+#+HTML: <hr />
+#+HTML: <em>A dark theme that's pretty sad really.</em>
+#+HTML: <hr />
+#+HTML: </div>
+#+HTML: <br/>
 
 Melancholy is a muted, desaturated dark theme with warm amber accents. It
-prioritises readability over visual noise — colours are used to communicate
+prioritises readability over visual noise;  colours are used to communicate
 meaning, not decoration.
 
 * Screenshots
