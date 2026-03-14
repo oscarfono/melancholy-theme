@@ -1,6 +1,6 @@
 ;;; melancholy-theme.el --- A dark theme that's pretty sad  -*- lexical-binding: t -*-
 
-;; Copyleft - do as you please
+;; License: GPL-3.0-or-later
 
 ;; Author: Cooper Oscarfono
 ;; Maintainer: Cooper Oscarfono
