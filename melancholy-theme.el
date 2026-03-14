@@ -183,10 +183,10 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(default ((((type graphic))
                (:family ,font-mono
-                :width normal :weight regular :slant normal
-                :foreground ,my-hicontrast :background ,my-shadow
-                :underline nil :overline nil :strike-through nil
-                :box nil :inverse-video nil :stipple nil))
+                        :width normal :weight regular :slant normal
+                        :foreground ,my-hicontrast :background ,my-shadow
+                        :underline nil :overline nil :strike-through nil
+                        :box nil :inverse-video nil :stipple nil))
               (((type tty))
                (:foreground "white" :background "black"))))
 
@@ -214,14 +214,14 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(mode-line ((((type graphic))
                  (:foreground ,my-hicontrast :background ,my-deepcontrast
-                  :box (:line-width 1 :color ,my-contrast)))
+                              :box (:line-width 1 :color ,my-contrast)))
                 (((type tty))
                  (:foreground "white" :background "brightblack"))))
    `(mode-line-inactive ((((type graphic))
-                           (:foreground ,my-contrast :background ,my-shadow
-                            :box (:line-width 1 :color ,my-deepcontrast)))
-                          (((type tty))
-                           (:foreground "brightblack" :background "black"))))
+                          (:foreground ,my-contrast :background ,my-shadow
+                                       :box (:line-width 1 :color ,my-deepcontrast)))
+                         (((type tty))
+                          (:foreground "brightblack" :background "black"))))
    `(mode-line-buffer-id  ((t (:foreground ,my-pop :weight bold))))
    `(mode-line-emphasis   ((t (:foreground ,my-highlight :weight bold))))
    `(mode-line-highlight  ((t (:foreground ,my-info))))
@@ -231,9 +231,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(tab-bar               ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-bar-tab           ((t (:background ,my-deepcontrast :foreground ,my-hicontrast
-                                :box (:line-width 1 :color ,my-contrast)))))
+                                            :box (:line-width 1 :color ,my-contrast)))))
    `(tab-bar-tab-inactive  ((t (:background ,my-shadow :foreground ,my-contrast
-                                :box (:line-width 1 :color ,my-deepcontrast)))))
+                                            :box (:line-width 1 :color ,my-deepcontrast)))))
    `(tab-line              ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-line-tab          ((t (:background ,my-deepcontrast :foreground ,my-hicontrast))))
    `(tab-line-tab-current  ((t (:background ,my-deepcontrast :foreground ,my-pop :weight bold))))
@@ -251,7 +251,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Base faces
    ;; ============================================================
    `(cursor              ((t (:background ,my-hicontrast))))
-   `(region              ((t (:background ,my-deepcontrast :extend t))))
+   `(region              ((t (:background ,my-fluff :extend t))))
    `(secondary-selection ((t (:background ,my-fluff :foreground ,my-shadow))))
    `(query-replace       ((t (:inherit isearch))))
    `(match               ((t (:background ,my-pop :foreground ,my-black))))
@@ -427,7 +427,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Symbol overlay
    ;; ============================================================
    `(symbol-overlay-default-face ((t (:background ,my-deepcontrast
-                                      :underline (:color ,my-pop :style line)))))
+                                                  :underline (:color ,my-pop :style line)))))
    `(symbol-overlay-face-1  ((t (:background ,my-deepcontrast :foreground ,my-pop))))
    `(symbol-overlay-face-2  ((t (:background ,my-deepcontrast :foreground ,my-highlight))))
    `(symbol-overlay-face-3  ((t (:background ,my-deepcontrast :foreground ,my-info))))
@@ -661,7 +661,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(helm-selection                  ((t (:background ,my-deepcontrast :extend t))))
    `(helm-separator                  ((t (:foreground ,my-deepcontrast))))
    `(helm-source-header              ((t (:family ,font-sans :height 1.3 :foreground ,my-contrast
-                                          :underline (:color ,my-deepcontrast :style line)))))
+                                                  :underline (:color ,my-deepcontrast :style line)))))
    `(helm-visible-mark               ((t (:foreground ,my-highlight :weight bold))))
 
    ;; ============================================================
@@ -688,7 +688,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Org Mode
    ;; ============================================================
    `(org-document-title         ((t (:family ,font-cursive :foreground ,my-info
-                                     :height 2.0 :weight extra-bold))))
+                                             :height 2.0 :weight extra-bold))))
    `(org-document-info          ((t (:foreground ,my-visited :height 1.1))))
    `(org-document-info-keyword  ((t (:foreground ,my-contrast))))
 
@@ -704,10 +704,10 @@ Shows ✓ for installed fonts and a download URL for missing ones."
 
    ;; No foreground on org-block — lets font-lock colours work inside src blocks
    `(org-block-begin-line ((t (:inherit fixed-pitch :foreground ,my-contrast
-                               :background ,my-deepcontrast :extend t))))
+                                        :background ,my-deepcontrast :extend t))))
    `(org-block            ((t (:inherit fixed-pitch :background ,my-deepcontrast :extend t))))
    `(org-block-end-line   ((t (:inherit fixed-pitch :foreground ,my-contrast
-                               :background ,my-deepcontrast :extend t))))
+                                        :background ,my-deepcontrast :extend t))))
 
    `(org-agenda-structure      ((t (:family ,font-sans :foreground ,my-pop :slant italic :weight bold))))
    `(org-agenda-date           ((t (:foreground ,my-contrast))))
@@ -748,9 +748,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(lsp-face-highlight-textual             ((t (:background ,my-deepcontrast))))
    `(lsp-face-highlight-read                ((t (:background ,my-deepcontrast
-                                                 :underline (:color ,my-pop :style line)))))
+                                                             :underline (:color ,my-pop :style line)))))
    `(lsp-face-highlight-write               ((t (:background ,my-deepcontrast
-                                                 :underline (:color ,my-active :style line)))))
+                                                             :underline (:color ,my-active :style line)))))
    `(lsp-headerline-breadcrumb-path-face    ((t (:foreground ,my-visited))))
    `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,my-contrast))))
    `(lsp-headerline-breadcrumb-symbols-face ((t (:foreground ,my-hicontrast :weight bold))))
