@@ -1,6 +1,6 @@
 ;;; melancholy-theme.el --- A dark theme that's pretty sad  -*- lexical-binding: t -*-
 
-;; License: GPL-3.0-or-later
+;; Copyleft - do as you please
 
 ;; Author: Cooper Oscarfono
 ;; Maintainer: Cooper Oscarfono
@@ -103,6 +103,15 @@ Set before loading the theme."
   :type 'color
   :group 'melancholy)
 
+(defcustom melancholy-region "#0A3A4A"
+  "Region/selection highlight background (default: deep cyan #0A3A4A).
+Both values below pass WCAG AA contrast against the default foreground:
+  #0A3A4A — deep cyan, dark tint of the primary accent
+  #2A2848 — muted indigo, cool purple-blue complement
+Set before loading the theme."
+  :type 'color
+  :group 'melancholy)
+
 ;; ============================================================
 ;; Font availability helper
 ;; ============================================================
@@ -155,7 +164,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
 
       ;; --- Base palette ---
       (my-shadow       "#2A2A2A")   ;; background
-      (my-deepcontrast "#4A4A4A")   ;; subtle bg: region, blocks
+      (my-deepcontrast "#4A4A4A")   ;; subtle bg: blocks, UI elements
       (my-contrast     "#707070")   ;; muted fg: comments, borders
       (my-visited      "#999999")   ;; de-emphasised fg
       (my-hicontrast   "#DEDEDE")   ;; primary fg
@@ -165,15 +174,17 @@ Shows ✓ for installed fonts and a download URL for missing ones."
       (my-warning      "#FF6969")   ;; red: errors, unsafe, danger
       (my-fluff        "#FCDEEA")   ;; pale pink: deep heading levels, rare use
 
-      ;; --- Accent tones resolved from defcustom ---
+      ;; --- Accent tones and region resolved from defcustom ---
       (my-pop       (bound-and-true-p melancholy-accent-primary))
       (my-active    (bound-and-true-p melancholy-accent-secondary))
-      (my-highlight (bound-and-true-p melancholy-accent-tertiary)))
+      (my-highlight (bound-and-true-p melancholy-accent-tertiary))
+      (my-region    (bound-and-true-p melancholy-region)))
 
   ;; Apply defaults if the defcustoms were not set before load-theme
   (unless my-pop       (setq my-pop       "#00B7FF"))
   (unless my-active    (setq my-active    "#F92672"))
   (unless my-highlight (setq my-highlight "#96BF33"))
+  (unless my-region    (setq my-region    "#0A3A4A"))
 
   (custom-theme-set-faces
    'melancholy
@@ -183,10 +194,10 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(default ((((type graphic))
                (:family ,font-mono
-                        :width normal :weight regular :slant normal
-                        :foreground ,my-hicontrast :background ,my-shadow
-                        :underline nil :overline nil :strike-through nil
-                        :box nil :inverse-video nil :stipple nil))
+                :width normal :weight regular :slant normal
+                :foreground ,my-hicontrast :background ,my-shadow
+                :underline nil :overline nil :strike-through nil
+                :box nil :inverse-video nil :stipple nil))
               (((type tty))
                (:foreground "white" :background "black"))))
 
@@ -214,14 +225,14 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(mode-line ((((type graphic))
                  (:foreground ,my-hicontrast :background ,my-deepcontrast
-                              :box (:line-width 1 :color ,my-contrast)))
+                  :box (:line-width 1 :color ,my-contrast)))
                 (((type tty))
                  (:foreground "white" :background "brightblack"))))
    `(mode-line-inactive ((((type graphic))
-                          (:foreground ,my-contrast :background ,my-shadow
-                                       :box (:line-width 1 :color ,my-deepcontrast)))
-                         (((type tty))
-                          (:foreground "brightblack" :background "black"))))
+                           (:foreground ,my-contrast :background ,my-shadow
+                            :box (:line-width 1 :color ,my-deepcontrast)))
+                          (((type tty))
+                           (:foreground "brightblack" :background "black"))))
    `(mode-line-buffer-id  ((t (:foreground ,my-pop :weight bold))))
    `(mode-line-emphasis   ((t (:foreground ,my-highlight :weight bold))))
    `(mode-line-highlight  ((t (:foreground ,my-info))))
@@ -231,9 +242,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(tab-bar               ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-bar-tab           ((t (:background ,my-deepcontrast :foreground ,my-hicontrast
-                                            :box (:line-width 1 :color ,my-contrast)))))
+                                :box (:line-width 1 :color ,my-contrast)))))
    `(tab-bar-tab-inactive  ((t (:background ,my-shadow :foreground ,my-contrast
-                                            :box (:line-width 1 :color ,my-deepcontrast)))))
+                                :box (:line-width 1 :color ,my-deepcontrast)))))
    `(tab-line              ((t (:background ,my-shadow :foreground ,my-contrast))))
    `(tab-line-tab          ((t (:background ,my-deepcontrast :foreground ,my-hicontrast))))
    `(tab-line-tab-current  ((t (:background ,my-deepcontrast :foreground ,my-pop :weight bold))))
@@ -251,7 +262,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Base faces
    ;; ============================================================
    `(cursor              ((t (:background ,my-hicontrast))))
-   `(region              ((t (:background ,my-fluff :extend t))))
+   `(region              ((t (:background ,my-region :extend t))))
    `(secondary-selection ((t (:background ,my-fluff :foreground ,my-shadow))))
    `(query-replace       ((t (:inherit isearch))))
    `(match               ((t (:background ,my-pop :foreground ,my-black))))
@@ -427,7 +438,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Symbol overlay
    ;; ============================================================
    `(symbol-overlay-default-face ((t (:background ,my-deepcontrast
-                                                  :underline (:color ,my-pop :style line)))))
+                                      :underline (:color ,my-pop :style line)))))
    `(symbol-overlay-face-1  ((t (:background ,my-deepcontrast :foreground ,my-pop))))
    `(symbol-overlay-face-2  ((t (:background ,my-deepcontrast :foreground ,my-highlight))))
    `(symbol-overlay-face-3  ((t (:background ,my-deepcontrast :foreground ,my-info))))
@@ -661,7 +672,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(helm-selection                  ((t (:background ,my-deepcontrast :extend t))))
    `(helm-separator                  ((t (:foreground ,my-deepcontrast))))
    `(helm-source-header              ((t (:family ,font-sans :height 1.3 :foreground ,my-contrast
-                                                  :underline (:color ,my-deepcontrast :style line)))))
+                                          :underline (:color ,my-deepcontrast :style line)))))
    `(helm-visible-mark               ((t (:foreground ,my-highlight :weight bold))))
 
    ;; ============================================================
@@ -688,7 +699,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Org Mode
    ;; ============================================================
    `(org-document-title         ((t (:family ,font-cursive :foreground ,my-info
-                                             :height 2.0 :weight extra-bold))))
+                                     :height 2.0 :weight extra-bold))))
    `(org-document-info          ((t (:foreground ,my-visited :height 1.1))))
    `(org-document-info-keyword  ((t (:foreground ,my-contrast))))
 
@@ -704,10 +715,10 @@ Shows ✓ for installed fonts and a download URL for missing ones."
 
    ;; No foreground on org-block — lets font-lock colours work inside src blocks
    `(org-block-begin-line ((t (:inherit fixed-pitch :foreground ,my-contrast
-                                        :background ,my-deepcontrast :extend t))))
+                               :background ,my-deepcontrast :extend t))))
    `(org-block            ((t (:inherit fixed-pitch :background ,my-deepcontrast :extend t))))
    `(org-block-end-line   ((t (:inherit fixed-pitch :foreground ,my-contrast
-                                        :background ,my-deepcontrast :extend t))))
+                               :background ,my-deepcontrast :extend t))))
 
    `(org-agenda-structure      ((t (:family ,font-sans :foreground ,my-pop :slant italic :weight bold))))
    `(org-agenda-date           ((t (:foreground ,my-contrast))))
@@ -748,9 +759,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    `(lsp-face-highlight-textual             ((t (:background ,my-deepcontrast))))
    `(lsp-face-highlight-read                ((t (:background ,my-deepcontrast
-                                                             :underline (:color ,my-pop :style line)))))
+                                                 :underline (:color ,my-pop :style line)))))
    `(lsp-face-highlight-write               ((t (:background ,my-deepcontrast
-                                                             :underline (:color ,my-active :style line)))))
+                                                 :underline (:color ,my-active :style line)))))
    `(lsp-headerline-breadcrumb-path-face    ((t (:foreground ,my-visited))))
    `(lsp-headerline-breadcrumb-separator-face ((t (:foreground ,my-contrast))))
    `(lsp-headerline-breadcrumb-symbols-face ((t (:foreground ,my-hicontrast :weight bold))))
@@ -861,7 +872,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(term-color-red          ((t (:foreground ,my-warning     :background ,my-warning))))
    `(term-color-green        ((t (:foreground ,my-highlight   :background ,my-highlight))))
    `(term-color-yellow       ((t (:foreground ,my-info        :background ,my-info))))
-   `(term-color-blue         ((t (:foreground "#5BC8F5"       :background "#5BC8F5"))))
+   `(term-color-blue         ((t (:foreground "#6B9FD4"       :background "#6B9FD4"))))
    `(term-color-magenta      ((t (:foreground ,my-active      :background ,my-active))))
    `(term-color-cyan         ((t (:foreground ,my-pop         :background ,my-pop))))
    `(term-color-white        ((t (:foreground ,my-white       :background ,my-white))))
@@ -869,7 +880,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(term-color-bright-red     ((t (:foreground ,my-warning     :background ,my-warning))))
    `(term-color-bright-green   ((t (:foreground ,my-highlight   :background ,my-highlight))))
    `(term-color-bright-yellow  ((t (:foreground ,my-info        :background ,my-info))))
-   `(term-color-bright-blue    ((t (:foreground "#8FE0FF"       :background "#8FE0FF"))))
+   `(term-color-bright-blue    ((t (:foreground "#89B4E8"       :background "#89B4E8"))))
    `(term-color-bright-magenta ((t (:foreground ,my-fluff       :background ,my-fluff))))
    `(term-color-bright-cyan    ((t (:foreground ,my-pop         :background ,my-pop))))
    `(term-color-bright-white   ((t (:foreground ,my-hicontrast  :background ,my-hicontrast))))
@@ -879,6 +890,53 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; input:  full-brightness white so typed text is never ambiguous
    `(comint-highlight-prompt ((t (:foreground ,my-pop :weight bold))))
    `(comint-highlight-input  ((t (:foreground ,my-hicontrast :weight normal))))
+
+   ;; eat — Emulate A Terminal (https://codeberg.org/akib/emacs-eat)
+   ;; eat uses :foreground only (unlike term which needs both :foreground and
+   ;; :background). Named aliases (eat-term-color-black etc.) map to the
+   ;; numeric faces 0-15; both are set for completeness.
+   ;;
+   ;; blue (#5BC8F5) is intentionally lighter than cyan (my-pop) so that
+   ;; ls directory colour (blue) and symlinks (cyan) remain distinguishable.
+   `(eat-term-color-0            ((t (:foreground ,my-shadow))))
+   `(eat-term-color-black        ((t (:inherit eat-term-color-0))))
+   `(eat-term-color-1            ((t (:foreground ,my-warning))))
+   `(eat-term-color-red          ((t (:inherit eat-term-color-1))))
+   `(eat-term-color-2            ((t (:foreground ,my-highlight))))
+   `(eat-term-color-green        ((t (:inherit eat-term-color-2))))
+   `(eat-term-color-3            ((t (:foreground ,my-info))))
+   `(eat-term-color-yellow       ((t (:inherit eat-term-color-3))))
+   `(eat-term-color-4            ((t (:foreground "#5BC8F5"))))
+   `(eat-term-color-blue         ((t (:inherit eat-term-color-4))))
+   `(eat-term-color-5            ((t (:foreground ,my-active))))
+   `(eat-term-color-magenta      ((t (:inherit eat-term-color-5))))
+   `(eat-term-color-6            ((t (:foreground ,my-pop))))
+   `(eat-term-color-cyan         ((t (:inherit eat-term-color-6))))
+   `(eat-term-color-7            ((t (:foreground ,my-white))))
+   `(eat-term-color-white        ((t (:inherit eat-term-color-7))))
+   `(eat-term-color-8            ((t (:foreground ,my-contrast))))
+   `(eat-term-color-bright-black   ((t (:inherit eat-term-color-8))))
+   `(eat-term-color-9            ((t (:foreground ,my-warning))))
+   `(eat-term-color-bright-red     ((t (:inherit eat-term-color-9))))
+   `(eat-term-color-10           ((t (:foreground ,my-highlight))))
+   `(eat-term-color-bright-green   ((t (:inherit eat-term-color-10))))
+   `(eat-term-color-11           ((t (:foreground ,my-info))))
+   `(eat-term-color-bright-yellow  ((t (:inherit eat-term-color-11))))
+   `(eat-term-color-12           ((t (:foreground "#8FE0FF"))))
+   `(eat-term-color-bright-blue    ((t (:inherit eat-term-color-12))))
+   `(eat-term-color-13           ((t (:foreground ,my-fluff))))
+   `(eat-term-color-bright-magenta ((t (:inherit eat-term-color-13))))
+   `(eat-term-color-14           ((t (:foreground ,my-pop))))
+   `(eat-term-color-bright-cyan    ((t (:inherit eat-term-color-14))))
+   `(eat-term-color-15           ((t (:foreground ,my-hicontrast))))
+   `(eat-term-color-bright-white   ((t (:inherit eat-term-color-15))))
+
+   ;; eat UI faces
+   `(eat-term-bold       ((t (:weight bold))))
+   `(eat-term-faint      ((t (:foreground ,my-visited :weight light))))
+   `(eat-term-italic     ((t (:slant italic))))
+   `(eat-term-slow-blink ((t (:inverse-video t))))
+   `(eat-term-fast-blink ((t (:inverse-video t))))
 
    ) ;; end custom-theme-set-faces
   )   ;; end let
