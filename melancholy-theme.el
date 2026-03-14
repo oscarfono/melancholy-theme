@@ -21,7 +21,7 @@
 ;; carefully chosen contrast ratios.  It covers core Emacs faces, org-mode,
 ;; magit, LSP, tree-sitter, and a broad set of language-specific modes.
 ;;
-;; It's a dark theme, that's pretty sad really. :-(
+;; It's a dark theme, that's pretty sad really.  :-(
 ;;
 ;; FONTS
 ;; -----
@@ -285,7 +285,7 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    `(font-lock-function-name-face        ((t (:foreground ,my-pop :weight bold))))
    `(font-lock-keyword-face              ((t (:foreground ,my-active :weight bold))))
    `(font-lock-negation-char-face        ((t (:foreground ,my-active))))
-   `(font-lock-preprocessor-face        ((t (:foreground ,my-active))))
+   `(font-lock-preprocessor-face         ((t (:foreground ,my-active))))
    `(font-lock-regexp-grouping-backslash ((t (:foreground ,my-pop))))
    `(font-lock-regexp-grouping-construct ((t (:foreground ,my-pop))))
    `(font-lock-string-face               ((t (:foreground ,my-white :slant italic))))
@@ -311,9 +311,9 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; ============================================================
    ;; Parens, Smart-Parens, Rainbow Delimiters
    ;; ============================================================
-   `(show-paren-match            ((t (:foreground ,my-pop :background ,my-shadow :weight extra-bold))))
-   `(show-paren-mismatch         ((t (:background ,my-warning :weight extra-bold))))
-   `(show-paren-match-expression ((t (:background ,my-deepcontrast))))
+   `(show-paren-match                ((t (:foreground ,my-pop :background ,my-shadow :weight extra-bold))))
+   `(show-paren-mismatch             ((t (:background ,my-warning :weight extra-bold))))
+   `(show-paren-match-expression     ((t (:background ,my-deepcontrast))))
    `(sp-show-pair-match-face         ((t (:background ,my-active))))
    `(sp-show-pair-match-content-face ((t (:background ,my-deepcontrast))))
    `(sp-show-pair-mismatch-face      ((t (:background ,my-warning :weight extra-bold))))
@@ -845,16 +845,16 @@ Shows ✓ for installed fonts and a download URL for missing ones."
    ;; Terminal — full 16-colour ANSI set for term/vterm/eshell
    ;; Both :foreground and :background are needed; term uses each as required.
    ;; ============================================================
-   `(term              ((t (:inherit fixed-pitch))))
-   `(term-bold         ((t (:weight bold))))
-   `(term-color-black        ((t (:foreground ,my-shadow      :background ,my-shadow))))
-   `(term-color-red          ((t (:foreground ,my-warning     :background ,my-warning))))
-   `(term-color-green        ((t (:foreground ,my-highlight   :background ,my-highlight))))
-   `(term-color-yellow       ((t (:foreground ,my-info        :background ,my-info))))
-   `(term-color-blue         ((t (:foreground ,my-pop         :background ,my-pop))))
-   `(term-color-magenta      ((t (:foreground ,my-active      :background ,my-active))))
-   `(term-color-cyan         ((t (:foreground ,my-pop         :background ,my-pop))))
-   `(term-color-white        ((t (:foreground ,my-white       :background ,my-white))))
+   `(term                      ((t (:inherit fixed-pitch))))
+   `(term-bold                 ((t (:weight bold))))
+   `(term-color-black          ((t (:foreground ,my-shadow      :background ,my-shadow))))
+   `(term-color-red            ((t (:foreground ,my-warning     :background ,my-warning))))
+   `(term-color-green          ((t (:foreground ,my-highlight   :background ,my-highlight))))
+   `(term-color-yellow         ((t (:foreground ,my-info        :background ,my-info))))
+   `(term-color-blue           ((t (:foreground ,my-pop         :background ,my-pop))))
+   `(term-color-magenta        ((t (:foreground ,my-active      :background ,my-active))))
+   `(term-color-cyan           ((t (:foreground ,my-pop         :background ,my-pop))))
+   `(term-color-white          ((t (:foreground ,my-white       :background ,my-white))))
    `(term-color-bright-black   ((t (:foreground ,my-contrast    :background ,my-contrast))))
    `(term-color-bright-red     ((t (:foreground ,my-warning     :background ,my-warning))))
    `(term-color-bright-green   ((t (:foreground ,my-highlight   :background ,my-highlight))))
