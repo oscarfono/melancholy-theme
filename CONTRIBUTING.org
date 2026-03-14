@@ -1,0 +1,346 @@
+#+TITLE: Melancholy Theme — Repository Workflow
+#+AUTHOR: Cooper Oscarfono
+#+EMAIL: cooper@oscarfono.com
+#+DATE: 2026
+#+OPTIONS: toc:2 num:nil ^:nil
+
+* Overview
+
+This document describes the workflow for making changes to melancholy-theme:
+commit conventions, versioning, tagging, and release process.
+
+The repository contains a single file of substance  =melancholy-theme.el=.
+Everything else is documentation and screenshots. Keep that simplicity in mind;
+the process here should never feel heavier than the work it governs.
+
+* Repository Structure
+
+#+begin_example
+melancholy-theme/
+├── melancholy-theme.el   — the theme (single source of truth)
+├── README.org            — installation, usage, package coverage, changelog
+├── CONTRIBUTING.org      — this document
+└── screens/              — screenshots referenced in README.org
+    ├── melancholy-code-preview-1.png
+    ├── melancholy-orgmode-preview.png
+    └── melancholy-org-agenda-preview.png
+#+end_example
+
+* Git Identity
+
+Before doing anything else on a new machine, set your identity:
+
+#+begin_src shell
+git config --global user.name "Cooper Oscarfono"
+git config --global user.email "cooper@oscarfono.com"
+#+end_src
+
+Verify it is set correctly:
+
+#+begin_src shell
+git config --global --list | grep user
+#+end_src
+
+This prevents commits being attributed to hostnames like
+=coop@users-MacBook-Pro.local=.
+
+* Branching Strategy
+
+This is a solo project with a simple model:
+
+- =main= is always releasable. Don't push broken code to main.
+- Work directly on =main= for small changes (single face tweaks, README edits).
+- Use a feature branch for anything that touches multiple face groups or
+  restructures the file, then merge when stable.
+
+#+begin_src shell
+# Feature branch for a larger change
+git checkout -b feat/vterm-faces
+# ... make changes, test ...
+git checkout main
+git merge --no-ff feat/vterm-faces -m "feat: add vterm face coverage"
+git branch -d feat/vterm-faces
+#+end_src
+
+* Commit Conventions
+
+** Format
+
+#+begin_example
+<type>: <short summary>
+
+<optional body — what changed and why, not what the diff shows>
+#+end_example
+
+- Summary line: 72 characters max, sentence case, no trailing period
+- Body: wrap at 72 characters, separated from summary by a blank line
+- Reference issues with =Fixes #N= or =Relates to #N= at the end of the body
+
+** Types
+
+| Type       | When to use                                              |
+|------------+----------------------------------------------------------|
+| =feat=     | New face coverage for a package or language              |
+| =fix=      | Correcting a wrong colour, broken face, or load error    |
+| =perf=     | Startup time or rendering improvements                   |
+| =refactor= | Restructuring without changing visible output            |
+| =docs=     | README, CONTRIBUTING, or comment changes only            |
+| =chore=    | Tagging, version bumps, screenshot updates               |
+| =style=    | Code formatting only — indentation, alignment, whitespace|
+
+** Examples
+
+Good commit messages:
+
+#+begin_example
+feat: add full vterm face coverage including ANSI bright variants
+
+fix: term-color-blue was identical to cyan — changed to #5BC8F5
+
+docs: update README with macOS font installation instructions
+
+chore: move v5.0 tag to HEAD, delete stale overhaul branch
+
+refactor: consolidate all LSP faces into a single section
+#+end_example
+
+Bad commit messages (avoid these):
+
+#+begin_example
+more tweaks
+checking something
+updated stuff
+more font fuckery
+fixed it
+#+end_example
+
+* Versioning
+
+Melancholy uses [[https://semver.org][Semantic Versioning]]: =MAJOR.MINOR.PATCH=
+
+| Increment | When                                                              |
+|-----------+-------------------------------------------------------------------|
+| =MAJOR=   | Breaking change — removed faces, renamed variables, Emacs minimum bumped |
+| =MINOR=   | New face coverage, new packages supported, new customisation options     |
+| =PATCH=   | Bug fixes, colour corrections, typos, documentation only                 |
+
+** Where the version lives
+
+The version is declared in two places — keep them in sync:
+
+1. The =;; Version:= header in =melancholy-theme.el=
+2. The most recent =** vX.Y= entry in the =* Changelog= section of =README.org=
+
+#+begin_src emacs-lisp
+;; Version: 5.1
+#+end_src
+
+** Deciding what increment to use
+
+Ask: /will anyone who has this theme loaded notice a difference without
+changing any config?/
+
+- Yes, and it might break something → MAJOR
+- Yes, new things now look better → MINOR
+- No visible change, or only a bug fixed → PATCH
+
+* Tagging a Release
+
+Tags are how MELPA knows what version to package. Always tag from =main=
+after the version bump commit is pushed.
+
+** Steps
+
+#+begin_src shell
+# 1. Confirm you are on main and it is clean
+git status
+git log --oneline -5
+
+# 2. Bump the version in melancholy-theme.el and README.org
+# (edit both files, then commit)
+git add melancholy-theme.el README.org
+git commit -m "chore: bump version to 5.1"
+
+# 3. Create an annotated tag
+git tag -a v5.1 -m "v5.1 — <one line summary of what's new>"
+
+# 4. Push the commit and the tag together
+git push origin main
+git push origin v5.1
+#+end_src
+
+** Annotated vs lightweight tags
+
+Always use annotated tags (=-a= flag). Annotated tags store a tagger,
+date, and message — MELPA and GitHub releases both use this metadata.
+Lightweight tags (no =-a=) are just pointers and carry no context.
+
+** Moving a tag (if you tagged the wrong commit)
+
+#+begin_src shell
+# Delete locally and remotely, then recreate
+git tag -d v5.1
+git push origin :refs/tags/v5.1
+git tag -a v5.1 HEAD -m "v5.1 — <summary>"
+git push origin v5.1
+#+end_src
+
+* The Changelog
+
+The =* Changelog= section in =README.org= is the human-readable release
+history. Update it as part of the same commit that bumps the version —
+never as a separate commit.
+
+** Format
+
+#+begin_example
+** vX.Y (YYYY-MM-DD)
+
+- feat: description of new face coverage
+- fix: what was wrong and what it is now
+- docs: what documentation changed
+#+end_example
+
+** What to include
+
+Include anything a user would want to know:
+- New packages covered
+- Colour corrections (old value → new value is helpful)
+- Behaviour changes
+- Minimum Emacs version changes
+- Breaking changes (flag these clearly)
+
+Omit purely internal changes that have no user-visible effect.
+
+* Making a Change — Full Walkthrough
+
+Here is the complete sequence for a typical patch, from start to push.
+
+#+begin_src shell
+# 1. Ensure main is up to date
+git pull origin main
+
+# 2. Make the change in melancholy-theme.el
+# (edit the file)
+
+# 3. Test it — reload the theme in a running Emacs
+M-x load-theme RET melancholy RET
+
+# 4. Check what changed
+git diff melancholy-theme.el
+
+# 5. Stage and commit
+git add melancholy-theme.el
+git commit -m "fix: term-color-blue was identical to cyan — changed to #5BC8F5"
+
+# 6. Push
+git push origin main
+#+end_src
+
+If the change warrants a new version (see [[*Versioning]]):
+
+#+begin_src shell
+# After the fix commit above, also update the version
+# Edit melancholy-theme.el ;; Version: header
+# Edit README.org changelog section
+git add melancholy-theme.el README.org
+git commit -m "chore: bump version to 5.0.1"
+git tag -a v5.0.1 -m "v5.0.1 — fix term-color-blue distinct from cyan"
+git push origin main
+git push origin v5.0.1
+#+end_src
+
+* Screenshots
+
+Screenshots live in =screens/= and are referenced in =README.org=.
+Retake them when:
+
+- A colour change is visible enough to affect the example output
+- A new major version is tagged
+- The font configuration changes
+
+** Taking a good screenshot
+
+1. Run =M-x melancholy-check-fonts= first — confirm CommitMono is loading
+2. Use a representative file: a Rust or JS file for code, an org file for prose
+3. Show enough context to demonstrate colour differentiation:
+   - Functions (cyan), keywords (pink), types (green), strings (soft white)
+   - A comment line, a string, an operator
+4. Keep the Emacs frame at a consistent size — full-screen or a fixed width
+5. Crop to just the Emacs frame, no OS chrome unless it adds context
+
+** Naming
+
+#+begin_example
+screens/melancholy-code-preview-1.png   — primary code screenshot
+screens/melancholy-orgmode-preview.png  — org-mode buffer
+screens/melancholy-org-agenda-preview.png — agenda view
+#+end_example
+
+Add new screenshots rather than replacing existing ones if you want to
+show multiple languages or contexts.
+
+* Housekeeping
+
+** Checking for stale branches
+
+#+begin_src shell
+git branch -a
+#+end_src
+
+Delete any branches that have been merged or are no longer needed:
+
+#+begin_src shell
+git branch -d branch-name
+git push origin --delete branch-name
+#+end_src
+
+** Verifying tag placement
+
+#+begin_src shell
+git log --oneline --decorate | head -10
+#+end_src
+
+The most recent version tag should be on or very close to =HEAD=. If it
+is several commits behind, either move it (see [[*Moving a tag (if you tagged the wrong commit)]]) or
+tag the current HEAD as the next patch version.
+
+** Checking git identity on the current machine
+
+#+begin_src shell
+git log --format="%an <%ae>" -5
+#+end_src
+
+All five entries should show =Cooper Oscarfono <cooper@oscarfono.com>=.
+If any show a hostname address, fix with:
+
+#+begin_src shell
+git config --global user.name "Cooper Oscarfono"
+git config --global user.email "cooper@oscarfono.com"
+git commit --amend --reset-author --no-edit   # fix the most recent commit
+git push --force-with-lease origin main       # only if not yet pushed
+#+end_src
+
+* MELPA Submission
+
+When the theme is ready for MELPA:
+
+1. Confirm =melancholy-theme.el= has correct headers:
+   #+begin_src emacs-lisp
+   ;; Version: 5.1
+   ;; Package-Requires: ((emacs "29.1"))
+   ;; Keywords: faces, frames, theme, dark
+   ;; URL: https://github.com/oscarfono/melancholy-theme
+   #+end_src
+
+2. Confirm a version tag exists on =main= (e.g. =v5.1=)
+
+3. Run =M-x package-lint-current-buffer= on =melancholy-theme.el= — fix any warnings
+
+4. Submit a PR to [[https://github.com/melpa/melpa][melpa/melpa]] adding a recipe file at
+   =recipes/melancholy-theme=:
+   #+begin_src emacs-lisp
+   (melancholy-theme
+    :repo "oscarfono/melancholy-theme"
+    :fetcher github)
+   #+end_src
