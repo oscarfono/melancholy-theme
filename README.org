@@ -14,6 +14,12 @@ meaning, not decoration.
 [[./screens/melancholy-code-preview-1.png]]
 
 #+ATTR_ORG: :width 800
+[[./screens/melancholy-code-preview-2.png]]
+
+#+ATTR_ORG: :width 800
+[[./screens/melancholy-code-preview-3.png]]
+
+#+ATTR_ORG: :width 800
 [[./screens/melancholy-orgmode-preview.png]]
 
 #+ATTR_ORG: :width 800
