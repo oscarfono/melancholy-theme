@@ -17,23 +17,23 @@ meaning, not decoration.
 [[./screens/melancholy-orgmode-preview.png]]
 
 #+ATTR_ORG: :width 800
-[[./screens/melancholy-org-agenda-preview.png]]
+[[./screens/melancholy-agenda-preview.png]]
 
 * Colour Philosophy
 
-| Role                    | Colour    | Used for                                    |
-|-------------------------+-----------+---------------------------------------------|
-| Primary accent (cyan)   | =#00B7FF= | Functions, builtins, directory names        |
-| Secondary accent (pink) | =#F92672= | Keywords, operators, active elements        |
-| Tertiary accent (green) | =#96BF33= | Types, variables, success states            |
-| Amber                   | =#FFB728= | Numbers, constants, macros, warnings        |
-| Red                     | =#FF6969= | Errors, Rust =unsafe=, critical danger      |
-| Pale pink               | =#FCDEEA= | Deep heading levels, rare accent use        |
-| Primary foreground      | =#DEDEDE= | Default text                                |
-| String foreground       | =#E8E8E8= | Strings (softened so they don't dominate)   |
-| Muted foreground        | =#707070= | Comments, borders, de-emphasised text       |
-| Background              | =#2A2A2A= | Base background                             |
-| Subtle background       | =#4A4A4A= | Regions, source blocks                      |
+| Role                    | Colour    | Used for                                  |
+|-------------------------+-----------+-------------------------------------------|
+| Primary accent (cyan)   | =#00B7FF= | Functions, builtins, directory names      |
+| Secondary accent (pink) | =#F92672= | Keywords, operators, active elements      |
+| Tertiary accent (green) | =#96BF33= | Types, variables, success states          |
+| Amber                   | =#FFB728= | Numbers, constants, macros, warnings      |
+| Red                     | =#FF6969= | Errors, Rust =unsafe=, critical danger    |
+| Pale pink               | =#FCDEEA= | Deep heading levels, rare accent use      |
+| Primary foreground      | =#DEDEDE= | Default text                              |
+| String foreground       | =#E8E8E8= | Strings (softened so they don't dominate) |
+| Muted foreground        | =#707070= | Comments, borders, de-emphasised text     |
+| Background              | =#2A2A2A= | Base background                           |
+| Subtle background       | =#4A4A4A= | Regions, source blocks                    |
 
 * Requirements
 
